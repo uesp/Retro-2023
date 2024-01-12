@@ -109,14 +109,39 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 	font-weight: normal;
 	color: rgba(0, 0, 0, 0.87);
+	background-color:var(--primary);
+}
+
+main {
+	background-image: url(/public/assets/images/img_background_7.webp);
+	
 }
 
 .wikiTitle{
 	font-family: 'wikiType', Arial, sans-serif;
 }
 
+/*================================================
+					  Header
+================================================*/
+
 header {
-    background-color: blanchedalmond;
-    height: 100vh;
-    width: 100vw;
+	height: 100vh;
+	width: 100vw;
+	background-image: url(/public/assets/images/patreon-banner-2020.png);
+	background-repeat:no-repeat;
+	background-position: center center;
+	background-size: cover;	
+}
+
+header {
+	display: flex;
+}
+
+header #title{
+	position: relative;
+	place-self: center;
+	place-content: center;
+	justify-self: center;
+	justify-content: center;
 }
