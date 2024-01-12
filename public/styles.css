@@ -6,8 +6,8 @@
 
 :root {
 	/* surface colours */
-	--background: #000000;
-	--background_dark: #1D1D1D;
+	--background: #f8f2e1;
+	/* --background_dark: #1D1D1D; */
 
 	--surface: #FBF1DA;
 	--surface_variant: #eee5cf;
@@ -109,11 +109,11 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 	font-weight: normal;
 	color: rgba(0, 0, 0, 0.87);
-	background-color:var(--primary);
+	background-color: var(--background);
 }
 
 main {
-	background-image: url(/public/assets/images/img_background_7.webp);
+	background-image: url(/public/assets/images/img_background.webp);
 	
 }
 
@@ -126,7 +126,7 @@ main {
 ================================================*/
 
 header {
-	height: 100vh;
+	height: 105vh;
 	width: 100vw;
 	background-image: url(/public/assets/images/patreon-banner-2020.png);
 	background-repeat:no-repeat;
@@ -136,6 +136,7 @@ header {
 
 header {
 	display: flex;
+	position: relative;
 }
 
 header #title{
@@ -144,4 +145,21 @@ header #title{
 	place-content: center;
 	justify-self: center;
 	justify-content: center;
+	margin: auto;
+	font-size: 5rem;
+}
+
+.content {
+	max-width: 700px;
+  	padding: 10rem 2em;
+  	margin: auto;
+}
+
+.shade {
+	height: 5vh;
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	bottom: 0px;
+	background: linear-gradient(#00000000, var(--background));
 }
