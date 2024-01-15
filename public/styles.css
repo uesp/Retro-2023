@@ -7,7 +7,6 @@
 :root {
 	/* surface colours */
 	--background: #f8f2e1;
-	/* --background_dark: #1D1D1D; */
 
 	--surface: #FBF1DA;
 	--surface_variant: #eee5cf;
@@ -132,13 +131,9 @@ header {
 	background-repeat:no-repeat;
 	background-position: center center;
 	background-size: cover;	
-}
-
-header {
 	display: flex;
 	position: relative;
 }
-
 header #title{
 	position: relative;
 	place-self: center;
@@ -146,8 +141,30 @@ header #title{
 	justify-self: center;
 	justify-content: center;
 	margin: auto;
-	font-size: 5rem;
+	font-size: clamp(4rem, 10vw, 7rem); 
+	text-align: center;
+	line-height: 1.1;
+
 }
+
+/* scroll hint */
+#scroll-hint {
+	position: absolute;
+	bottom: 10%;
+	width: 100%;
+}
+#scroll-hint p {
+	width: fit-content;
+	margin: auto;
+	text-align: center;
+	color:white !important;
+	font-size: large;
+	font-weight: 500;
+}
+
+/*================================================
+				  Main content
+================================================*/
 
 .content {
 	max-width: 700px;
