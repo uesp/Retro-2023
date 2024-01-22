@@ -7,67 +7,19 @@
 :root {
 	/* surface colours */
 	--background: #f8f2e1;
+	--parallax-speed: 10;
+}
 
-	--surface: #FBF1DA;
-	--surface_variant: #eee5cf;
-	--surface_variant_dark: #F7E9CB;
 
-	--surface_dark: #2E2E2E;
-	--surface_dark_variant: #353535;
-	--surface_dark_variant_dark: #252525;
-
-	--primary: #f8f2e1;
-	--primary_variant:#e5dfd0;
-	--primary_variant_light: #faf4e6;
-	--primary_variant_dark: #E6DDC5;
-
-	--primary_dark: #3E3E3E;
-	--primary_dark_variant: #373737;
-
-	--highlight_dark:#6B5F50;
-	--highlight_light: #FFE893;
-
-	--bubble_selection: rgba(84, 84, 84, 0.5);
-	--error: #C2571B;
-	--error_light: #cf5f1f;
-	--error_dark: #DD8A5B;
-	--delete_pastel: #d95c5c;
-	--add_light: #aad67d;
-	--add: #a0ca76;
-	--add_dark: #84a861;
-	--editing: #3e68ff8d;
-	--editing_opaque: #3e68ff;
-	--editing_opaque_dark: #3557d1;
-	--editing_opaque_light: #5d80ff;
-	--editing_outline: #263e97;
-	--editing_outline_light: #3c53aa;
-	--editing_outline_dark: #203377;
-	--delete: rgba(186,43,69,1);
-	--delete_light: rgb(207, 47, 76);
-	--save: #5e8735;
-	--save_light: #679638;
-	--revert_light: #c6e8e8;;
-	--revert: #bedcdc;
-	--revert_dark: #accfcf;
-
-	/* text colours */
-	--text_loc_name: #33ff33;
-	--text_link: rgba(138,90,68,1);
-	--text_on_primary: black;
-	--text_on_secondary: white;
-	--text_tertiary: rgba(255, 255, 255, 0.5);
-	--text_low_emphasis: #474747;
-
-	/* misc colours */
-	--divider: rgba(164, 163, 163, 0.30);
-	--shadow: rgba(0, 0, 0, 0.35);
-	--secondary: #8a5a44;
-	--secondary_light: #9c684f;
-	--secondary_variant: #A69480;
-	--secondary_variant_light: #bda993;
-	--secondary_variant_dark: #8b7d6d;
-  	--selection: rgba(121, 80, 60, 0.234);
-	--selection_variant: #8b7d6d61;
+/* wiki logo font */
+@font-face {
+	font-family: 'wikiType';
+	src: url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('embedded-opentype'), /* Internet Explorer */
+		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff2'),             /* Super Modern Browsers */
+		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff'),              /* Pretty Modern Browsers */
+		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('truetype'),          /* Safari, Android, iOS */
+		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('svg');               /* Legacy iOS */
+	font-display: swap;
 }
 
 /*================================================
@@ -133,6 +85,8 @@ header {
 	background-size: cover;	
 	display: flex;
 	position: relative;
+	color: #fafafa;
+	text-shadow: 0px 0px 25px black !important;
 }
 header #title{
 	position: relative;
@@ -141,10 +95,14 @@ header #title{
 	justify-self: center;
 	justify-content: center;
 	margin: auto;
-	font-size: clamp(4rem, 10vw, 7rem); 
+	font-size: clamp(4rem, 10vw, 6.5rem); 
 	text-align: center;
 	line-height: 1.1;
+}
 
+.parallax {
+	animation: parallax linear; 
+	animation-timeline: scroll();
 }
 
 /* scroll hint */
@@ -152,6 +110,13 @@ header #title{
 	position: absolute;
 	bottom: 10%;
 	width: 100%;
+	animation-name: fade-in;
+	animation-duration: 2.5s;
+	animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+@keyframes fade-in {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
 }
 #scroll-hint p {
 	width: fit-content;
@@ -162,6 +127,12 @@ header #title{
 	font-weight: 500;
 }
 
+@keyframes parallax {
+	to {
+		transform: translateY(calc(var(--parallax-speed) * 200px));
+	}
+}
+  
 /*================================================
 				  Main content
 ================================================*/
@@ -180,3 +151,68 @@ header #title{
 	bottom: 0px;
 	background: linear-gradient(#00000000, var(--background));
 }
+
+.content {
+	z-index: 999;
+}
+
+	/* --surface: #FBF1DA;
+	--surface_variant: #eee5cf;
+	--surface_variant_dark: #F7E9CB;
+
+	--surface_dark: #2E2E2E;
+	--surface_dark_variant: #353535;
+	--surface_dark_variant_dark: #252525;
+
+	--primary: #f8f2e1;
+	--primary_variant:#e5dfd0;
+	--primary_variant_light: #faf4e6;
+	--primary_variant_dark: #E6DDC5;
+
+	--primary_dark: #3E3E3E;
+	--primary_dark_variant: #373737;
+
+	--highlight_dark:#6B5F50;
+	--highlight_light: #FFE893;
+
+	--bubble_selection: rgba(84, 84, 84, 0.5);
+	--error: #C2571B;
+	--error_light: #cf5f1f;
+	--error_dark: #DD8A5B;
+	--delete_pastel: #d95c5c;
+	--add_light: #aad67d;
+	--add: #a0ca76;
+	--add_dark: #84a861;
+	--editing: #3e68ff8d;
+	--editing_opaque: #3e68ff;
+	--editing_opaque_dark: #3557d1;
+	--editing_opaque_light: #5d80ff;
+	--editing_outline: #263e97;
+	--editing_outline_light: #3c53aa;
+	--editing_outline_dark: #203377;
+	--delete: rgba(186,43,69,1);
+	--delete_light: rgb(207, 47, 76);
+	--save: #5e8735;
+	--save_light: #679638;
+	--revert_light: #c6e8e8;;
+	--revert: #bedcdc;
+	--revert_dark: #accfcf;
+
+	/* text colours */
+	/* --text_loc_name: #33ff33;
+	--text_link: rgba(138,90,68,1);
+	--text_on_primary: black;
+	--text_on_secondary: white;
+	--text_tertiary: rgba(255, 255, 255, 0.5);
+	--text_low_emphasis: #474747;
+
+	/* misc colours */
+	/* --divider: rgba(164, 163, 163, 0.30);
+	--shadow: rgba(0, 0, 0, 0.35);
+	--secondary: #8a5a44;
+	--secondary_light: #9c684f;
+	--secondary_variant: #A69480;
+	--secondary_variant_light: #bda993;
+	--secondary_variant_dark: #8b7d6d;
+  	--selection: rgba(121, 80, 60, 0.234);
+	--selection_variant: #8b7d6d61; */
