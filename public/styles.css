@@ -190,13 +190,15 @@ header #title{
 ================================================*/
 
 .statbox {
+	display: flex;
 	box-shadow: 0px 0px 5px 5px var(--shadow) !important;
 	background-color: var(--primary_variant_light);
 	width: fit-content;
 	border-radius: var(--radius_small);
 	padding: 12px;
-	margin: 8px;
 	flex-grow: 1;
+	flex-direction: column;
+    justify-content: space-around;
 	min-width: 150px;
 	max-width: 300px;
 }
@@ -278,6 +280,7 @@ header #title{
 	width: calc(100% + (var(--breakout-margin)) * 2);
 	flex-wrap: wrap;
 	margin: 1rem calc(-1 * var(--breakout-margin));
+	gap: 1dvh;
 }
 /* if container has highlighted element, shrink the rest */
 .statbox-container:has(> .highlight) > :not(.highlight) { 
