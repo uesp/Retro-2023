@@ -21,6 +21,14 @@
 
 	--shadow: rgba(0, 0, 0, 0.012);
 
+	--accent: #b37e65;
+	--secondary_light: #9c684f;
+	--secondary_variant: #A69480;
+	--secondary_variant_light: #bda993;
+	--secondary_variant_dark: #8b7d6d;
+  	--selection: rgba(121, 80, 60, 0.234);
+	--selection_variant: #8b7d6d61;
+
 	--primary: #f8f2e1;
 	--primary_variant:#e5dfd0;
 	--primary_variant_light: #faf4e6;
@@ -156,7 +164,7 @@ header #title{
 
 .content {
 	max-width: 700px;
-  	padding: 10rem 2em;
+  	padding: 7rem 2em;
   	margin: auto;
 }
 
@@ -179,6 +187,13 @@ header #title{
 				  	Statboxes
 ================================================*/
 
+.statbox-container {
+	display: flex;
+	position: relative;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
 .statbox {
 	box-shadow: 0px 0px 5px 5px var(--shadow) !important;
 	background-color: var(--primary_variant_light);
@@ -187,14 +202,78 @@ header #title{
 	padding: 12px;
 	margin: 8px;
 	flex-grow: 1;
+	min-width: 250px;
 }
 
+.statbox p {
+	margin: 4px;
+}
 
-.statbox-container {
+/* statbox title */
+.statbox .title {
 	display: flex;
-	width: 100%;
-	flex-wrap: wrap;
+    flex-direction: row;
+	align-items: center;
+	direction: rtl;
+	width: fit-content
 }
+.statbox .title span {
+	margin: 4px;
+}
+.statbox .title h1 {
+	margin-left: 4px;
+}
+.statbox .data {
+	font-size: 2.5rem;
+  	font-weight: bold;
+	color: var(--accent);
+}
+
+.statbox .data .additional {
+	font-size: medium !important;
+	font-weight: normal !important;
+	color: grey;
+	margin-top: unset !important;
+}
+
+.statbox .data .main:has(+ p) {
+	margin-bottom: 0px;
+}
+
+
+
+.statbox .difference {
+	padding: 4px;
+    padding-left: 8px;
+	padding-right: 8px;
+	width: fit-content;
+	display: block;
+	margin-top: 8px;
+	border-radius: 12px;
+	font-size: smaller;
+}
+
+.statbox .difference.up {
+	background: #d9ffd9ad;
+	border: 1.5px solid #7fc6a5;
+}
+
+.statbox .difference.down {
+	background: #d9ffd9ad;
+	border: 1.5px solid #7fc6a5;
+}
+
+.statbox .difference.up::before{
+	content: "▲ ";
+	color: #709c87;
+}
+
+.statbox .difference.down::before{
+	content: "▼ ";
+	color: #709c87;
+}
+
+
 
 
 

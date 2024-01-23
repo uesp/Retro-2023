@@ -1,8 +1,6 @@
 
 
-
-
-- possible to add a banner to wiki? for announcing things? site notice extrension
+- make stats pop out from grid on desktop, and inline on mobile
 
 - would you like to write something for this? brief paragraph about thoughts on 2023, and then your thoughts on starfield wiki
 
