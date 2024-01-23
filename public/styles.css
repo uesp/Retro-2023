@@ -201,6 +201,8 @@ header #title{
     justify-content: space-around;
 	min-width: 150px;
 	max-width: 300px;
+	transition: all 100ms ease-in-out;
+	align-items: center;
 }
 
 .statbox p {
@@ -241,7 +243,7 @@ header #title{
 
 
 
-.statbox .difference {
+.statbox .diff {
 	padding: 4px;
     padding-left: 8px;
 	padding-right: 8px;
@@ -252,22 +254,22 @@ header #title{
 	font-size: smaller;
 }
 
-.statbox .difference.up {
+.statbox .diff.up {
 	background: #d9ffd9ad;
 	border: 1.5px solid #7fc6a5;
 }
 
-.statbox .difference.down {
+.statbox .diff.down {
 	background: #d9ffd9ad;
 	border: 1.5px solid #7fc6a5;
 }
 
-.statbox .difference.up::before{
+.statbox .diff.up::before{
 	content: "▲ ";
 	color: #709c87;
 }
 
-.statbox .difference.down::before{
+.statbox .diff.down::before{
 	content: "▼ ";
 	color: #709c87;
 }
@@ -292,6 +294,52 @@ header #title{
 	* {
 		--breakout-margin: 3em;
 	}
+}
+
+@media only screen and (max-width: 800px) {
+
+	.statbox {
+		scale: 0.90;
+	}
+}
+
+@media only screen and (max-width: 715px) {
+	.statbox-container {
+		width: 100% !important;
+		margin: 0;
+	}
+
+	.statbox {
+		width:  fit-content !important;
+		max-width: unset !important;
+	}
+
+	.statbox-container >  :not(.highlight) {
+		scale: 1.15;
+	}
+
+	.statbox-container > .highlight {
+		scale: 1;
+	}
+
+}
+
+@media only screen and (max-width: 600px) {
+
+	.statbox {
+		flex-grow: 1;
+		width: 100%;
+	}
+
+	.statbox-container >  :not(.highlight) {
+		scale: 1.;
+	}
+
+	.statbox-container > .highlight {
+		scale: 1;
+	}
+
+
 }
 /*================================================
 				  		Other
