@@ -8,6 +8,23 @@
 	/* surface colours */
 	--background: #f8f2e1;
 	--parallax-speed: 10;
+
+	--surface: #FBF1DA;
+	--surface_variant: #eee5cf;
+	--surface_variant_dark: #F7E9CB;
+
+	--surface_dark: #2E2E2E;
+	--surface_dark_variant: #353535;
+	--surface_dark_variant_dark: #252525;
+
+	--radius_small: 16px;
+
+	--shadow: rgba(0, 0, 0, 0.012);
+
+	--primary: #f8f2e1;
+	--primary_variant:#e5dfd0;
+	--primary_variant_light: #faf4e6;
+	--primary_variant_dark: #E6DDC5;
 }
 
 
@@ -156,18 +173,32 @@ header #title{
 	z-index: 999;
 }
 
-	/* --surface: #FBF1DA;
-	--surface_variant: #eee5cf;
-	--surface_variant_dark: #F7E9CB;
 
-	--surface_dark: #2E2E2E;
-	--surface_dark_variant: #353535;
-	--surface_dark_variant_dark: #252525;
 
-	--primary: #f8f2e1;
-	--primary_variant:#e5dfd0;
-	--primary_variant_light: #faf4e6;
-	--primary_variant_dark: #E6DDC5;
+/*================================================
+				  	Statboxes
+================================================*/
+
+.statbox {
+	box-shadow: 0px 0px 5px 5px var(--shadow) !important;
+	background-color: var(--primary_variant_light);
+	width: fit-content;
+	border-radius: var(--radius_small);
+	padding: 12px;
+	margin: 8px;
+	flex-grow: 1;
+}
+
+
+.statbox-container {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+
+
+	/* 
 
 	--primary_dark: #3E3E3E;
 	--primary_dark_variant: #373737;
