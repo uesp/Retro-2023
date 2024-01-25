@@ -95,6 +95,10 @@ main {
 	
 }
 
+html {
+	overflow: hidden;
+}
+
 .wikiTitle{
 	font-family: 'wikiType', Arial, sans-serif;
 }
@@ -103,38 +107,9 @@ main {
 					  Header
 ================================================*/
 
-header {
-	height: 105vh;
-	width: 100vw;
-	background-image: url(/public/assets/images/patreon-banner-2020.png);
-	background-repeat:no-repeat;
-	background-position: center center;
-	background-size: cover;	
-	display: flex;
-	position: relative;
-	color: #fafafa;
-	text-shadow: 0px 0px 25px black !important;
-}
-header #title{
-	position: relative;
-	place-self: center;
-	place-content: center;
-	justify-self: center;
-	justify-content: center;
-	margin: auto;
-	font-size: clamp(4rem, 10vw, 6.5rem); 
-	text-align: center;
-	line-height: 1.1;
-}
-
-.parallax {
-	animation: parallax linear; 
-	animation-timeline: scroll();
-}
-
 /* scroll hint */
 #scroll-hint {
-	position: absolute;
+	position: fixed;
 	bottom: 10%;
 	width: 100%;
 	animation-name: fade-in;
@@ -164,7 +139,7 @@ header #title{
 				  Main content
 ================================================*/
 
-.content {
+article {
 	max-width: 700px;
   	padding: 7rem 2em;
   	margin: auto;
@@ -181,6 +156,7 @@ header #title{
 
 .content {
 	z-index: 999;
+	position: relative;
 }
 
 
@@ -356,6 +332,11 @@ section > h1 {
 }
 
 
+article:first-child{
+	background: #353535 !;
+}
+
+
 /*================================================
 				  		Other
 ================================================*/
@@ -470,3 +451,60 @@ section > h1 {
 		left: -39px;
 		border: 3px solid orangered;
 	  } */
+
+
+
+
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	perspective: 1px;
+	-webkit-perspective: 1px;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+}
+
+header {
+	height: 105vh;
+	width: 100vw;
+	display: flex;
+	position: relative;
+	color: #fafafa;
+	text-shadow: 0px 0px 25px black !important;
+	position: relative;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+}
+
+header #title{
+	position: relative;
+	place-self: center;
+	place-content: center;
+	justify-self: center;
+	justify-content: center;
+	margin: auto;
+	font-size: clamp(4rem, 10vw, 6.5rem); 
+	text-align: center;
+	line-height: 1.1;
+}
+
+header:after {
+	background-image: url(/public/assets/images/patreon-banner-2020.png);
+	background-repeat:no-repeat;
+	background-position: center center;
+	background-size: cover;	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: -1;
+	content: "";
+	transform: translateZ(-1px) scale(2);
+	-webkit-transform: translateZ(-1px) scale(2);
+}
