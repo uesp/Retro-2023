@@ -4,21 +4,26 @@
 
 @import url("reset.css");
 
-* {
-	/* surface colours */
-	--background: #f8f2e1;
-	--parallax-speed: 10;
+* { /* variables */
 
+	/* units */
+	--parallax-speed: 10;
+	--breakout-margin: 7em;
+	--article-shade-height: 6vh;
+	
+	/* colours */
+	--background: #f8f2e1;
+	
 	--surface: #FBF1DA;
 	--surface_variant: #eee5cf;
 	--surface_variant_dark: #F7E9CB;
-
+	
 	--surface_dark: #2E2E2E;
 	--surface_dark_variant: #353535;
 	--surface_dark_variant_dark: #252525;
-
+	
+	
 	--radius_small: 16px;
-
 	--shadow: rgba(0, 0, 0, 0.012);
 
 	--accent: #b37e65;
@@ -34,9 +39,12 @@
 	--primary_variant_light: #faf4e6;
 	--primary_variant_dark: #E6DDC5;
 
-	--breakout-margin: 7em;
+
 }
 
+/*================================================
+					   Typeface
+================================================*/
 
 /* wiki logo font */
 @font-face {
@@ -49,59 +57,10 @@
 	font-display: swap;
 }
 
-/*================================================
-					Dimensions
-================================================*/
-
-:root {
-	/* heights, widths, and volume */
-	--appbar_dimen: 48px;
-	--layer_widget_dimen: 64px;
-	--side_panel_width: 380px;
-	--zindex_floating: 800;
-	--zindex_overlay: 9998;
-
-	/* padding */
-	--padding_minimum: 8px;
-	--padding_small: 12px;
-	--padding_medium: 16px;
-	--padding_large: 32px;
-
-	/* border radius */
-	--radius_minimum: 2px;
-	--radius_tiny: 4px;
-	--radius_small: 8px;
-	--radius_medium: 12px;
-	--radius_large: 16px;
-	--radius_largest: 32px;
-	--radius_button: var(--appbar_dimen);
-	--radius_circle: 50%;
-}
-
-/*================================================
-					  Fonts
-================================================*/
-
-body {
-	line-height: 1.5;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
-	font-weight: normal;
-	color: rgba(0, 0, 0, 0.87);
-	background-color: var(--background);
-}
-
-main {
-	background-image: url(/public/assets/images/img_background.webp);
-	
-}
-
-html {
-	overflow: hidden;
-}
-
 .wikiTitle{
 	font-family: 'wikiType', Arial, sans-serif;
 }
+
 
 /*================================================
 					  Header
@@ -112,9 +71,9 @@ html {
 	position: fixed;
 	bottom: 10%;
 	width: 100%;
-	animation-name: fade-in;
+	/* animation-name: fade-in;
 	animation-duration: 2.5s;
-	animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+	animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045); */
 }
 @keyframes fade-in {
 	0%   { opacity: 0; }
@@ -135,9 +94,25 @@ html {
 	}
 }
   
+
+
 /*================================================
-				  Main content
+					   Content
 ================================================*/
+
+
+body {
+	line-height: 1.5;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.87);
+	background-color: var(--background);
+}
+
+main {
+	background-image: url(/public/assets/images/img_background.webp);
+	
+}
 
 article {
 	max-width: 700px;
@@ -145,21 +120,22 @@ article {
   	margin: auto;
 }
 
-.shade {
-	height: 5vh;
-	position: absolute;
-	width: 100%;
-	z-index: 10;
-	bottom: 0px;
-	background: linear-gradient(#00000000, var(--background));
-}
-
 .content {
-	z-index: 999;
+	z-index: 99;
 	position: relative;
 }
 
-
+/* article shade */
+.content::before {
+	display: block;
+	content: "";
+	height: var(--article-shade-height);
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	top: calc(-1 *(var(--article-shade-height)));
+	background: linear-gradient(#00000000, var(--background));
+}
 
 /*================================================
 				  	Statboxes
@@ -467,7 +443,7 @@ body {
 }
 
 header {
-	height: 105vh;
+	height: calc(100vh + var(--article-shade-height));
 	width: 100vw;
 	display: flex;
 	position: relative;
