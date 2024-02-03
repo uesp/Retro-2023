@@ -53,7 +53,6 @@
 	font-family: 'wikiType', Arial, sans-serif;
 }
 
-
 /*================================================
 					  Header
 ================================================*/
@@ -114,6 +113,18 @@ header #title{
 	line-height: 1.1;
 }
 
+/* header shade */
+.content::before {
+	display: block;
+	content: "";
+	height: var(--article_shade_height);
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	top: calc(-1 *(var(--article_shade_height)));
+	background: linear-gradient(#00000000, var(--background));
+}
+
 /* scroll hint */
 #scroll-hint {
 	position: fixed;
@@ -145,7 +156,7 @@ header #title{
 					   Content
 ================================================*/
 
-
+/* body */
 body {
 	line-height: 1.5;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
@@ -153,33 +164,47 @@ body {
 	color: rgba(0, 0, 0, 0.87);
 	background-color: var(--background);
 }
-
 main {
 	background-image: url(/public/assets/images/img_background.webp);
-	
 }
 
+p {
+	margin-bottom: 2.5rem;
+}
+
+/* article */
+.content {
+	z-index: 99;
+	position: relative;
+}
 article {
 	max-width: 700px;
   	padding: 7rem 2em;
   	margin: auto;
 }
 
-.content {
-	z-index: 99;
-	position: relative;
+/* sections */
+section {
+	border-top: solid 1px grey;
+	margin-top: 5rem;
+	padding-top: 5rem;
 }
-
-/* article shade */
-.content::before {
-	display: block;
-	content: "";
-	height: var(--article_shade_height);
-	position: absolute;
-	width: 100%;
-	z-index: 10;
-	top: calc(-1 *(var(--article_shade_height)));
-	background: linear-gradient(#00000000, var(--background));
+section > h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1.5rem;
+}
+section:first-child {
+	border-top: none;
+	margin-top: 1rem;
+  	padding-top: 1rem;
+}
+ 
+/* divider */
+hr {
+	border: solid 1px gray;
+	margin-top: rem;
+	margin-bottom: 3rem;
+	width: 75%;
 }
 
 /*================================================
@@ -192,7 +217,7 @@ article {
 	position: relative;
 	width: calc(100% + (var(--breakout_margin)) * 2);
 	flex-wrap: wrap;
-	margin: 1rem calc(-1 * var(--breakout_margin));
+	margin: 3rem calc(-1 * var(--breakout_margin));
 	gap: 1dvh;
 	align-items: center;
 }
@@ -330,30 +355,5 @@ article {
 		display: block;
 	}
 
-}
-
-
-hr {
-	border: solid 1px gray;
-    margin-top: rem;
-    margin-bottom: 3rem;
-    width: 75%;
-}
-
-
-section {
-	border-top: solid 1px grey;
-	margin-top: 5rem;
-	padding-top: 5rem;
-}
-
-section > h1 {
-	font-size: 2.5rem;
-	margin-bottom: 1.5rem;
-}
-
-
-article:first-child{
-	background: #353535 !;
 }
 
