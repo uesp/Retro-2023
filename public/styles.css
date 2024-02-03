@@ -11,14 +11,14 @@
 	--breakout_margin: 7em;
 	--article_shade_height: 6vh;
 	--card_corner_radius: 12px;
-	--timeline_pip_size: 0.9rem;
+	--timeline_pip_size: 1rem;
 	--timeline_indent_size: 3rem;
 	
 	/* colours */
 	--background: #f2e5cd;
 	--shadow: rgba(0, 0, 0, 0.012);
-	--accent: #9c684f;
-	--divider: grey;
+	--accent: #a77259;
+	--divider: rgba(103, 103, 103, 0.328);
 	--text_low_emphasis: #474747;
 	
 	/* maybe used? */
@@ -174,7 +174,7 @@ main {
 
 /* text */
 p {
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 }
 a {
 	color: var(--accent);
@@ -196,11 +196,6 @@ article {
 }
 
 /* sections */
-section {
-	border-top: solid 1px grey;
-	margin-top: 5rem;
-	padding-top: 5rem;
-}
 section > h1 {
 	font-size: 2.5rem;
 	margin-bottom: 1.5rem;
@@ -208,12 +203,17 @@ section > h1 {
 section:first-child {
 	border-top: none;
 	margin-top: 1rem;
-  	padding-top: 1rem;
+	padding-top: 1rem;
 }
- 
+
 /* divider */
+section {
+	border-top: solid 1.5px var(--divider);
+	margin-top: 5rem;
+	padding-top: 5rem;
+}
 hr {
-	border: solid 1px var(--divider);
+	border: solid 1.5px var(--divider);
 	margin-top: rem;
 	margin-bottom: 3rem;
 	width: 75%;
@@ -381,12 +381,13 @@ hr {
 	position: relative;
 	height: 100%;
 	border-left: solid 2px var(--divider);
-	border-image: linear-gradient(to top, red 0%, blue 100%);
+	border-image: linear-gradient(to bottom, transparent 1%, var(--divider) 15%);
 	border-image-slice: 1;
 }
 
 .timeline-container .event .title {
 	position: relative;
+	margin-bottom: 1rem;
 }
 
 .date {
@@ -400,9 +401,10 @@ hr {
 	width: 1rem;
 	height: 1rem;
 	position: absolute;
-	left: 0px;
-	border-radius: 50%;
 	display: inline-block;
     vertical-align: middle;
     line-height: normal;
+	left: -2.05rem;
+	top: 10px;
+	clip-path: polygon(50% 0, 0 50%, 50% 100%, 50% 65%, 35% 50%, 50% 35%, 65% 50%, 50% 65%, 50% 100%, 100% 50%);
 }
