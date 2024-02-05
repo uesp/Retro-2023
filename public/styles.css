@@ -395,7 +395,7 @@ hr {
 	border-image: linear-gradient(to top, transparent 1%, var(--divider) 15%);
 }
 
-.timeline-container .event .title {
+.timeline-container .event .title:not(.statbox .title) {
 	position: relative;
 	padding-bottom: 1rem;
 }
@@ -420,7 +420,7 @@ hr {
 }
 
 /* timeline pip */
-.timeline-container .event  .title::before {
+.timeline-container .event  .title:not(.statbox .title)::before {
 	content: "";
 	background-color: var(--accent);
 	width: 1rem;
