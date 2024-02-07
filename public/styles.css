@@ -385,7 +385,7 @@ hr {
 	}
 
 	.statbox-container >  :not(.highlight) {
-		scale: 1.15 !important;
+		scale: 1 !important;
 	}
 	.statbox-container > .highlight {
 		scale: 0.99;
@@ -446,6 +446,7 @@ hr {
 			display: flex;
 			padding-bottom: 2rem;
 			justify-content: space-evenly;
+			gap: 12px;
 			img {
 				object-fit: cover;
 				max-block-size: 270px;
