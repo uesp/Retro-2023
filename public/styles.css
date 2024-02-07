@@ -219,7 +219,7 @@ section {
 hr {
 	border: solid 1.5px var(--divider);
 	margin-top: rem;
-	margin-bottom: 3rem;
+	margin-bottom: 1.5rem;
 	width: 75%;
 }
 
@@ -233,7 +233,7 @@ hr {
 	position: relative;
 	width: calc(100% + (var(--breakout_margin)) * 2);
 	flex-wrap: wrap;
-	margin: 3rem calc(-1 * var(--breakout_margin));
+	margin: 2rem calc(-1 * var(--breakout_margin));
 	gap: 2dvh;
 	align-items: center;
 	justify-content: flex-start;
@@ -444,6 +444,8 @@ hr {
 			height: fit-content;
 			align-items: center;
 			display: flex;
+			padding-bottom: 2rem;
+			justify-content: space-evenly;
 			img {
 				object-fit: cover;
 				max-block-size: 270px;
@@ -456,7 +458,6 @@ hr {
 	}
 
 	.highlight.event { /* highlighted event */
-		background: pink;
 		margin-left: 0;
 		padding-left: 0;
 		padding-top: 0;
@@ -481,14 +482,6 @@ hr {
 		}
 	}
 
-	/* timeline line */
-	.event:first-child {
-		border-image: linear-gradient(to bottom, transparent 1%, var(--divider) 15%);
-	}
-	.event:last-child {
-		border-image: linear-gradient(to top, transparent 1%, var(--divider) 15%);
-	}
-
 	/* timeline pip */
 	.event .title:not(span)::before {
 		content: "";
@@ -503,4 +496,16 @@ hr {
 		top: 45%;
 		clip-path: polygon(50% 0, 0 50%, 50% 100%, 50% 60%, 40% 50%, 50% 40%, 60% 50%, 50% 60%, 50% 100%, 100% 50%);
 	}
+
+	/* timeline line */
+	.event:first-child {
+		border-image: linear-gradient(to bottom, transparent 1%, var(--divider) 15%);
+	}
+	.event:last-child {
+		border-image: linear-gradient(to top, transparent 1%, var(--divider) 15%);
+	}
+	.highlight + .event { 
+		border-image: linear-gradient(to bottom, transparent 1%, var(--divider) 10%);
+	}
+
 }
