@@ -202,8 +202,8 @@ section:first-child {
 /* divider */
 section {
 	border-top: solid 1.5px var(--divider);
-	margin-top: 5rem;
-	padding-top: 5rem;
+	margin-top: 4rem;
+	padding-top: 4rem;
 }
 hr {
 	border: solid 1.5px var(--divider);
