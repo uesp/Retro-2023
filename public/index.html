@@ -24,16 +24,14 @@
 				<h5>Year in Review</h4>
 			</div>
 
-			<div id="scroll-hint">
+			<div id="scroll-hint" onclick="scrollDown()">
 				<p>▼</p>
 			</div>
-
 		</header>
 
 		<main class="content">
 
 			<article>
-
 				<section id="intro">
 
 					<p>Welcome to UESP's 2023 Retrospective, where we will look back on our journey over the past year, and maybe take a glimpse at what awaits us in 2024.</p>
@@ -93,10 +91,6 @@
 				<p>From the official side of things, we saw the long-anticipated release of <a href="https://starfieldwiki.net/wiki/Starfield:Starfield">Starfield</a>, the ESO <a href="https://en.uesp.net/wiki/Online:Necrom">Necrom</a> expansion, updates to Skyrim, and the surprise pre-release of The Elder Scrolls: <a href="https://en.uesp.net/wiki/Castles:Castles">Castles</a>.</p>				
 				
 				<section id="timeline">
-
-
-					<!-- timeline line is grey -->
-					<!-- accent circle is accent coloured -->
 					
 					<h1>Major events</h1>
 
@@ -291,7 +285,7 @@
 
 						</div>
 
-						<div class="event">
+						<div class="event highlight">
 							<div class="title">
 								<h4 class="date">12 August</h4>
 								<h2 class="heading">UESP reaches 100k articles!</h2>
@@ -299,47 +293,82 @@
 							<div class="content">
 								<div class="text">
 									<p>
-										After spending most of its wiki life in the ten thousands, UESP finally achieves a six-digit article count, with Lore:Cheese as the 100,000th article. This achievement is celebrated in an ESO Community Spotlight.
-										In mid August 2023, UESP achieved a huge milestone: 100,000 content articles! In celebration of this goal, the ESO team <a href="https://www.elderscrollsonline.com/en-us/news/post/65109">interviewed UESP</a> in a community spotlight.
+										After spending most of its wiki life in the ten thousands, UESP finally achieves a six-digit article count, with <a href="https://en.uesp.net/wiki/Lore:Cheese">Lore:Cheese</a> as the 100,000th article. This achievement was celebrated in an ESO <a href="https://www.elderscrollsonline.com/en-us/news/post/65109">Community Spotlight</a>.
 									</p>
 									<p>
-										The 100,000th article was <a href="https://en.uesp.net/wiki/Lore:Cheese">Lore:Cheese</a>, with <a href="https://en.uesp.net/wiki/Lore:Rat">Lore:Rat</a> being the 99,999th and <a href="https://en.uesp.net/wiki/Lore:Balhar">Lore:Balhar</a> being the 100,001st. 
+										For those curious, the 99,999th article was <a href="https://en.uesp.net/wiki/Lore:Rat">Lore:Rat</a>, and <a href="https://en.uesp.net/wiki/Lore:Balhar">Lore:Balhar</a> was the 100,001st. 
 									</p>
 								</div>
 							</div>
 						</div>
 
-						<div class="event spacer"></div>
-
-						<div id="starfield">
-							<div class="timeline-container">
-								<div class="event highlght">
-									<div class="title">
-										<h4 class="date">7th February</h4>
-										<h2 class="heading">CSlist expanded to support multiple languages</h2>
-									</div>
-									<div class="content">
-										<div class="text">
-											<p>
-												UESP started off the year by expanding our <a href="https://cslist.uesp.net/">CSList</a> game database to cover multiple languages.
-												Some translated in-game texts can have drastic differences, as translators often end up working with outdated versions of texts. 
-											</p>
-											
-											<p>One example comes from non-English versions of The Real Barenziah, which worked off of the Daggerfall version due to time constraints, and <a href="https://en.uesp.net/wiki/Lore:The_Real_Barenziah,_v_2">as such was never censored like the English equivalent</a>.</p>
-				
-											<p>We also hope this will help <a href="https://en.uesp.net/wiki/UESPWiki:Hosted_Wikis"">UESP translation projects</a>, wherever they may arise. As one of the few clear options we have available to aid them without learning additional languages to build these wikis ourselves, we hope this will prove useful to them.</p>
-										</div>
-										<div class="gallery">
-											<img src="assets/images/cslist.webp"> 
-										</div>
-									</div>
+						<div class="event highlight starfield">
+							<div class="title">
+								<h4 class="date">28th August</h4>
+								<h2 class="heading">Starfield Wiki launched</h2>
+							</div>
+							<div class="gallery">
+								<img src="https://images.starfieldwiki.net/1/19/Sfwiki_wordmark_logo_white.svg"> 
+							</div>
+							<div class="gallery">
+								<img src="assets/images/sfwiki.png"> 
+							</div>
+							<div class="content">
+								<div class="text">
+									<p>
+										Perhaps the biggest challenge of the year for UESP was the launch of <a href="https://starfieldwiki.net/wiki/Home">Starfield Wiki</a>. 
+										Prior to the launch of Starfield, we were hard at work getting Starfield Wiki up and running. 
+									</p>
+									<p>
+										Starfield Wiki represents a big opportunity for us, as this was UESP's first wiki covering a Bethesda game other than The Elder Scrolls.
+										We hope that documenting the game on its own wiki will give us some insights into the development of the Creation Engine ahead of the release of The Elder Scrolls VI. 
+									</p>
+									<p>
+										We're really excited about providing a solid wiki for the community on this one, and seeing where Starfield goes in future!
+									</p>
 								</div>
-
-
 							</div>
 
+							<div class="statbox-container">
 
+								<div class="statbox">
+									<span class="title">
+										<h1>Page Views Since Launch</h1>
+										<span class="material-symbols-outlined">visibility</span>
+									</span>
+										
+									<span class="data">
+										<p class="main">2.5 million</p>
+									</span>
+								</div>
+							
+								<div class="statbox">
+									<span class="title">
+										<h1>Unique Visitors</h1>
+										<span class="material-symbols-outlined">person</span>
+									</span>
+									<span class="data">
+										<p class="main">440k</p>
+									</span>
+								</div>
+							
+								<div class="statbox">
+									<span class="title">
+										<h1>Content Articles</h1>
+										<span class="material-symbols-outlined">article</span>
+									</span>
+									<span class="data">
+										<p class="main">8,500</p>
+										<p class="additional">17k pages total</p>
+									</span>
+								</div>
+							
+							</div>
 						</div>
+					</div>
+
+
+
 
 					</div>
 				</section>
@@ -411,13 +440,12 @@
 	
 					<h1>Thank you</h1>
 
-					<b>—— From everyone at the UESP & Starfield Wikis</b>
+					<b>—— Everyone at UESP.net</b>
 					<br>
 					<br>
 					<b>28th January, 2024</b>
 	
 				</section>
-	
 	
 	
 			</div>

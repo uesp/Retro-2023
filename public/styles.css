@@ -15,30 +15,14 @@
 	--timeline_indent_size: 3rem;
 	
 	/* colours */
+	--surface: #faf4e6;
 	--background: #f2e5cd;
 	--shadow: rgba(0, 0, 0, 0.049);
 	--accent: #a77259;
 	--divider: rgba(103, 103, 103, 0.328);
-	--text_header: #fafafa;
 	--text_primary: black;
-	--text_title: black;
+	--text_heading: black;
 	--text_low_emphasis: #5b5b5b;
-	
-	/* maybe used? */
-	--surface: #FBF1DA;
-	--surface_variant: #eee5cf;
-	--surface_variant_dark: #F7E9CB;
-
-	--secondary_light: #9c684f;
-	--secondary_variant: #A69480;
-	--secondary_variant_light: #bda993;
-	--secondary_variant_dark: #8b7d6d;
-	--selection_variant: #8b7d6d61;
-
-	--primary: #f8f2e1;
-	--primary_variant:#e5dfd0;
-	--primary_variant_light: #faf4e6;
-	--primary_variant_dark: #E6DDC5;
 }
 
 /*================================================
@@ -55,7 +39,6 @@
 		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('svg');               /* Legacy iOS */
 	font-display: swap;
 }
-
 .wikiTitle{
 	font-family: 'wikiType', Arial, sans-serif;
 }
@@ -75,10 +58,7 @@ header {
 	position: relative;
 	transform-style: preserve-3d;
 	-webkit-transform-style: preserve-3d;
-
-	h1 {
-		color: var(--text_header);
-	}
+	--text_heading: white;
 }
 body {
 	width: 100vw;
@@ -91,18 +71,9 @@ body {
 	-webkit-transform-style: preserve-3d;
 }
 
-p {
-	color: var(--text_primary);
-	font-size: 1.1rem;
-}
-
-h1, h2 {
-	color: var(--text_title);
-}
-
 /* header image */
 header:after {
-	background-image: url(/public/assets/images/patreon-banner-2020.png);
+	background-image: url(assets/images/patreon-banner-2020.png);
 	background-repeat:no-repeat;
 	background-position: center center;
 	background-size: cover;	
@@ -152,6 +123,7 @@ main.content::before {
 	width: 100%;
 	animation: jump 8s;
 	animation-iteration-count: infinite;
+	cursor: pointer;
 }
 #scroll-hint p {
 	width: fit-content;
@@ -185,16 +157,21 @@ body {
 	background-color: var(--background);
 }
 main {
-	background-image: url(/public/assets/images/img_background.webp);
+	background-image: url(assets/images/img_background.webp);
 }
 
 /* text */
 p {
+	color: var(--text_primary);
+	font-size: 1.1rem;
 	margin-bottom: 1rem;
 }
 a {
 	color: var(--accent);
 	font-weight: bold;
+}
+h1, h2 {
+	color: var(--text_heading);
 }
 a:hover {
 	opacity: 0.8;
@@ -251,13 +228,13 @@ hr {
 	justify-content: flex-start;
 	align-items: stretch;
 	align-content: stretch;
-  	height: 100%;
+  	height: fit-content;
 }
 
 .statbox {
 	display: flex;
 	box-shadow: 0px 0px 5px 5px var(--shadow);
-	background-color: var(--primary_variant_light);
+	background-color: var(--surface);
 	width: fit-content;
 	border-radius: var(--card_corner_radius);
 	padding: 12px;
@@ -268,11 +245,13 @@ hr {
 	max-width: 300px;
 	transition: all 150ms ease-in-out;
 	flex-basis: 0;
-	
-}
+	p { margin: 4px; }
 
-.statbox p {
-	margin: 4px;
+	span {
+		color: var(--text_heading);
+	}
+
+	
 }
 
 /* statbox title */
@@ -283,7 +262,6 @@ hr {
 	direction: rtl;
 	width: fit-content;
 	text-align: center;
-	white-space: nowrap;
 }
 .statbox .title span {
 	margin: 4px;
@@ -455,12 +433,14 @@ hr {
 
 		/* event image gallery */
 		.gallery {
+			z-index: 1;
 			height: fit-content;
 			align-items: center;
 			display: flex;
 			padding-bottom: 2rem;
 			justify-content: space-evenly;
 			gap: 12px;
+			position: relative;
 			img {
 				object-fit: cover;
 				max-block-size: 270px;
@@ -473,27 +453,13 @@ hr {
 	}
 
 	.highlight.event { /* highlighted event */
-		margin-left: 0;
-		padding-left: 0;
-		padding-top: 0;
-		border-left: 0;
-
-		/* highlighted event title */
-		.title:not(span) {
-			padding-top: 0.1rem;
-			margin-left: calc(var(--timeline_indent_size) / 2);
-			padding-left: calc(var(--timeline_indent_size) / 2);
-			border-left: solid 2px var(--divider);
-			border-image: linear-gradient(to top, transparent 1%, var(--divider) 30%);
-			border-image-slice: 1 !important;
-		}
-
+		/* highlighted event pip */
 		.title:not(span)::before {
-			width: calc(var(--timeline_pip_size) * 1.8);
-			height: calc(var(--timeline_pip_size) * 1.8);
-			left: -1rem;
-			top: 39%;
-			clip-path: polygon(50% 0, 0 50%, 50% 100%, 50% 60%, 40% 50%, 50% 40%, 60% 50%, 50% 60%, 50% 100%, 100% 50%);
+			width: calc(var(--timeline_pip_size) * 1.5);
+			height: calc(var(--timeline_pip_size) * 1.5);
+			left: -2.3rem;
+			top: 42%;
+			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 50% 80%, 80% 50%, 50% 20%, 20% 50%, 50% 80%, 50% 65%, 35% 50%, 50% 35%, 65% 50%, 50% 65%, 50% 100%, 0 50%);
 		}
 	}
 
@@ -519,9 +485,6 @@ hr {
 	.event:last-child {
 		border-image: linear-gradient(to top, transparent 1%, var(--divider) 15%);
 	}
-	.highlight + .event { 
-		border-image: linear-gradient(to bottom, transparent 1%, var(--divider) 10%);
-	}
 	.event.spacer {
 		height: 70dvh;
 	}
@@ -529,13 +492,13 @@ hr {
 }
 
 /*================================================
-				  	Starfield Segment
+				  Starfield Segment
 ================================================*/
 
-#starfield {
-
+.starfield {
+	--article_shade_height: 40dvh;
 	--text_primary: #d0d0d0;
-	--text_title: #e1e1e1;
+	--text_heading: #e1e1e1;
 	--background: #0C161E;
 	--background_dark: #090E18;
 	--shadow: rgba(0, 0, 0, 0.049);
@@ -543,17 +506,33 @@ hr {
 	--divider: rgba(103, 103, 103, 0.328);
 	--text_low_emphasis: #a4a4a4 !important;
 	--divider: rgba(255, 255, 255, 0.2);
-
-	width: 100dvw;
-  	height: fit-content;
-  	/* url(//images.starfieldwiki.net/backgrounds/lines_transparent_075.png) no-repeat,linear-gradient(var(--background),var(--background_dark)); */
+	--surface: #131f28;
+	min-height: 120dvh;
+}
+.starfield::after {
+	width: 120dvw;
 	background: url(//images.starfieldwiki.net/backgrounds/lines_transparent_075.png) no-repeat,linear-gradient(var(--background),var(--background_dark));
-  	position: absolute;
-  	left: 0;
-	padding-top: 5rem;
-	padding-bottom: 5rem;
+	position: absolute;
+	left: -4rem;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center center !important;
 	background-size: cover;
+	height: 100%;
+	margin: 1em calc(50% - 50vw);
+	content: "";
+	top: 0;
+ 	z-index: -1;
+}
+
+.starfield::before {
+	content: "";
+	width: 120dvw;
+  	height: calc(var(--article_shade_height));
+	top: calc(-1 * var(--article_shade_height));
+  	position: absolute;
+  	left: -2rem;
+	z-index: -1;
+	margin: 1em calc(50% - 50vw);
+	background: linear-gradient(to bottom, transparent 65%, var(--background) 95%);
 }
