@@ -496,7 +496,7 @@ hr {
 ================================================*/
 
 .starfield {
-	--article_shade_height: 40dvh;
+	--article_shade_height: 20dvh;
 	--text_primary: #d0d0d0;
 	--text_heading: #e1e1e1;
 	--background: #0C161E;
@@ -508,6 +508,7 @@ hr {
 	--divider: rgba(255, 255, 255, 0.2);
 	--surface: #131f28;
 	min-height: 120dvh;
+	padding-top: 3rem !important;
 }
 .starfield::after {
 	width: 120dvw;
@@ -524,7 +525,6 @@ hr {
 	top: 0;
  	z-index: -1;
 }
-
 .starfield::before {
 	content: "";
 	width: 120dvw;
@@ -535,4 +535,7 @@ hr {
 	z-index: -1;
 	margin: 1em calc(50% - 50vw);
 	background: linear-gradient(to bottom, transparent 65%, var(--background) 95%);
+}
+.event:has(+ .starfield) {
+	padding-bottom: 7rem;
 }
