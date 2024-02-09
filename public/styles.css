@@ -2,6 +2,8 @@
 					  General
 ================================================*/
 
+/* CSS inspired by https://weirdgloop.org/2021-year-in-review/ */
+
 @import url("reset.css");
 
 :root { /* variables */
@@ -50,7 +52,7 @@
 /* header */
 header {
 	height: calc(100vh + var(--article_shade_height));
-	width: 100vw;
+	width: 100dvw;
 	display: flex;
 	position: relative;
 	color: #fafafa;
@@ -61,8 +63,8 @@ header {
 	--text_heading: white;
 }
 body {
-	width: 100vw;
-	height: 100vh;
+	width: 100dvw;
+	height: 100dvh;
 	overflow-x: hidden;
 	overflow-y: auto;
 	perspective: 1px;
@@ -284,7 +286,7 @@ hr {
 .statbox .data .additional {
 	font-size: medium !important;
 	font-weight: normal !important;
-	color: grey;
+	color: var(--text_low_emphasis);
 	margin-top: unset !important;
 }
 
@@ -495,6 +497,7 @@ hr {
 				  Starfield Segment
 ================================================*/
 
+/* starfield segment padding */
 .starfield {
 	--article_shade_height: 20dvh;
 	--text_primary: #d0d0d0;
@@ -507,8 +510,8 @@ hr {
 	--text_low_emphasis: #a4a4a4 !important;
 	--divider: rgba(255, 255, 255, 0.2);
 	--surface: #131f28;
-	min-height: 120dvh;
-	padding-top: 3rem !important;
+	padding-top: 5rem !important;
+	padding-bottom: 5rem !important;
 }
 .starfield::after {
 	width: 120dvw;
@@ -520,22 +523,48 @@ hr {
 	background-position: center center !important;
 	background-size: cover;
 	height: 100%;
-	margin: 1em calc(50% - 50vw);
+	margin: 0 calc(50% - 50vw);
 	content: "";
 	top: 0;
  	z-index: -1;
 }
-.starfield::before {
-	content: "";
-	width: 120dvw;
-  	height: calc(var(--article_shade_height));
-	top: calc(-1 * var(--article_shade_height));
-  	position: absolute;
-  	left: -2rem;
-	z-index: -1;
-	margin: 1em calc(50% - 50vw);
-	background: linear-gradient(to bottom, transparent 65%, var(--background) 95%);
-}
+
+/* adjaacent events padding */
 .event:has(+ .starfield) {
-	padding-bottom: 7rem;
+	padding-bottom: 5rem;
+}
+.starfield + .event { 
+	padding-top: 5rem;
+}
+
+/* torn paper */
+.paper-tear {
+	height: 8rem;
+	width: 120dvw;
+	left: 0;
+	margin: 0 calc(50% - 50vw);
+	background-color: purple;
+	position: absolute;
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 98% 98.6%,
+	93.6% 97.4%,
+	90.3% 98.3%,
+	86.8% 98.3%,
+	78.6% 98.5%,
+	76.4% 99.2%,
+	69.7% 99.8%,
+	64.2% 99.3%,
+	61.8% 99.2%,
+	57.2% 98.1%,
+	48.7% 98.3%,
+	46.8% 99%,
+	39.6% 98.9%,
+	33.8% 97.3%,
+	28.2% 99.4%,
+	27% 98.3%,
+	22.1% 98.6%,
+	13.1% 97.1%,
+	8.7% 99.3%,
+	2.7% 97.4%,
+	0% 100%,
+	0% 0%,);
 }
