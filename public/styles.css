@@ -129,7 +129,7 @@ main.content::before {
 /* scroll hint */
 #scroll-hint {
 	position: fixed;
-	bottom: 10%;
+	bottom: 13%;
 	width: 100%;
 	animation: jump 8s;
 	animation-iteration-count: infinite;
