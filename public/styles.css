@@ -42,11 +42,11 @@
 /* wiki logo font */
 @font-face {
 	font-family: 'wikiType';
-	src: url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('embedded-opentype'), /* Internet Explorer */
-		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff2'),             /* Super Modern Browsers */
-		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff'),              /* Pretty Modern Browsers */
-		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('truetype'),          /* Safari, Android, iOS */
-		 url('/public/assets/fonts/Goudy_Medieval_Alternate.ttf') format('svg');               /* Legacy iOS */
+	src: url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('embedded-opentype'), /* Internet Explorer */
+		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff2'),             /* Super Modern Browsers */
+		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff'),              /* Pretty Modern Browsers */
+		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('truetype'),          /* Safari, Android, iOS */
+		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('svg');               /* Legacy iOS */
 	font-display: swap;
 }
 .wikiTitle{
