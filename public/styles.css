@@ -16,12 +16,20 @@
 	--timeline_pip_size: 1rem;
 	--timeline_indent_size: 3rem;
 	
-	/* colours */
+	/* surface colours */
 	--surface: #faf4e6;
 	--background: #f2e5cd;
 	--shadow: rgba(0, 0, 0, 0.049);
-	--accent: #a77259;
+	--accent: #ae7b63;
 	--divider: rgba(103, 103, 103, 0.328);
+	--diff_neutral: #ffffffe0;
+	--diff_neutral_outline: #2f2f2f33;
+	--diff_up: #d9ffd9ad;
+	--diff_up_outline: #7fc6a5;
+	--diff_down: #f9d1cfad;
+	--diff_down_outline: #db6767;
+
+	/* text colours */
 	--text_primary: black;
 	--text_heading: black;
 	--text_low_emphasis: #5b5b5b;
@@ -315,28 +323,29 @@ hr {
 	font-size: small;
 	font-weight: normal;
 	color: black;
-	background: #ffffffe0;
-	border: 1.5px solid #2f2f2f33;
+	background: var(--diff_neutral);
+	border: 1.5px solid var(--diff_neutral_outline);
+	box-sizing: border-box;
 }
 
 .statbox .diff span.up {
-	background: #d9ffd9ad;
-	border: 1.5px solid #7fc6a5;
+	background: var(--diff_up);
+	border: 1.5px solid var(--diff_up_outline);
 }
 
 .statbox .diff span.down {
-	background: #d9ffd9ad;
-	border: 1.5px solid #7fc6a5;
+	background: var(--diff_down);
+	border: 1.5px solid var(--diff_down_outline);
 }
 
 .statbox .diff span.up::before{
 	content: "▲ ";
-	color: #709c87;
+	color: var(--diff_up_outline);
 }
 
 .statbox .diff span.down::before{
 	content: "▼ ";
-	color: #709c87;
+	color: var(--diff_down_outline);
 }
 
 /* if container has highlighted element, shrink the rest */
@@ -394,6 +403,38 @@ hr {
 
 	.timeline-container .event .content {
 		flex-direction: column !important;
+	}
+
+}
+
+/* progress lists */
+.progress-list > * {
+    padding-left: 8px;
+	padding-right: 8px;
+	width: 100%;
+	display: block;
+	margin-top: 4px;
+	border-radius: var(--card_corner_radius);
+	font-size: small;
+	font-weight: normal;
+	color: black;
+	background: linear-gradient(to right, var(--accent) var(--progress), var(--diff_neutral) 0);
+	border: 1.5px solid var(--diff_neutral_outline);
+	border-left: 1.5px solid #946b58;
+	border-right: 1.5px solid #d4d4d3;
+	box-sizing: border-box;
+	filter: brightness(1.1);
+
+	.data {
+		color: var(--text_primary);
+		font-size: 0.9rem;
+		width: fit-content;
+		float: right;
+	}
+
+	.name {
+		font-size: 0.9rem;
+		font-weight: normal;
 	}
 
 }
