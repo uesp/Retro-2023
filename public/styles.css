@@ -551,6 +551,7 @@ hr {
 	--text_low_emphasis: #a4a4a4 !important;
 	--divider: rgba(255, 255, 255, 0.2);
 	--surface: #131f28;
+
 	padding-top: 5rem !important;
 	padding-bottom: 5rem !important;
 	border-image: linear-gradient(to bottom, rgba(103, 103, 103, 0.328) 0%, var(--divider) 5%, var(--divider) 98%, rgba(103, 103, 103, 0.328) 90%) !important;
