@@ -1,3 +1,3 @@
-# Retro-2023
+# UESP-Retro's
 
-UESP.net's retrospective for the year 2023.
+Home to UESP.net's yearly retrospectives.
