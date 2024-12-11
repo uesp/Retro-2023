@@ -51,3 +51,27 @@ cardContainer.addEventListener('click', () => {
         card.style.transform = 'rotateX(0deg) rotateY(0deg)'; // Reset tilt when unflipping
     }
 });
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+
+function openLightbox(image) {
+	lightboxImage.src = image.src;
+	lightbox.showModal();
+}
+
+lightbox.addEventListener('click', (event) => {
+	if (event.target === lightbox) {
+		closeLightbox();
+	}
+});
+
+document.addEventListener('keydown', (event) => {
+	if (event.key === 'Escape') {
+		closeLightbox();
+	}
+});
+
+function closeLightbox() {
+	lightbox.close();
+}
