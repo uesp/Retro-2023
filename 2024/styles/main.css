@@ -223,7 +223,134 @@ hr {
 }
 
 /*================================================
-				  	Statboxes
+				  	  Timeline
+================================================*/
+
+.timeline-container {
+	.event { /* event item */
+		position: relative;
+		margin-left: calc(var(--timeline_indent_size) / 2);
+		padding-left: calc(var(--timeline_indent_size) / 2);
+		padding-top: 1rem;
+		padding-bottom: 2rem;
+		border-left: solid 2px var(--divider);
+		border-image: linear-gradient(to bottom, var(--divider) 1%, var(--divider) 15%);
+		border-image-slice: 1 !important;
+
+		/* event title */
+		.title:not(span) {
+			position: relative;
+			padding-bottom: 1rem;
+		}
+
+		/* event date text */
+		.date {
+			color: var(--text_low_emphasis);
+		}
+
+		/* event content */
+		.content {
+			display: flex;
+			gap: 2rem;
+		}
+		.content .text {
+			flex: 1;
+		}
+
+		/* event image gallery */
+		.gallery {
+			z-index: 1;
+			height: fit-content;
+			align-items: center;
+			display: flex;
+			padding-bottom: 2rem;
+			justify-content: space-evenly;
+			gap: 12px;
+			position: relative;
+			img {
+				object-fit: cover;
+				max-block-size: 270px;
+				border-radius: var(--card_corner_radius);
+				box-shadow: 0px 0px 5px 5px var(--shadow);
+				max-width: 270px;
+			}
+		}
+		
+	}
+
+	.highlight.event { /* highlighted event */
+		/* highlighted event pip */
+		.title:not(span)::before {
+			width: calc(var(--timeline_pip_size) * 1.5);
+			height: calc(var(--timeline_pip_size) * 1.5);
+			left: -2.3rem;
+			top: 42%;
+			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 50% 80%, 80% 50%, 50% 20%, 20% 50%, 50% 80%, 50% 65%, 35% 50%, 50% 35%, 65% 50%, 50% 65%, 50% 100%, 0 50%);
+		}
+	}
+
+	/* timeline pip */
+	.event .title:not(span)::before {
+		content: "";
+		background-color: var(--accent);
+		width: var(--timeline_pip_size);
+		height: var(--timeline_pip_size);
+		position: absolute;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: normal;
+		left: -2.05rem;
+		top: 45%;
+		clip-path: polygon(50% 0, 0 50%, 50% 100%, 50% 60%, 40% 50%, 50% 40%, 60% 50%, 50% 60%, 50% 100%, 100% 50%);
+	}
+
+	/* timeline line */
+	.event:first-child {
+		border-image: linear-gradient(to bottom, transparent 1%, var(--divider) 15%);
+	}
+	.event:last-child {
+		border-image: linear-gradient(to top, transparent 1%, var(--divider) 15%);
+	}
+	.event.spacer {
+		height: 70dvh;
+	}
+
+}
+
+/* progress lists */
+.progress-list > * {
+    padding-left: 8px;
+	padding-right: 8px;
+	width: 100%;
+	display: block;
+	margin-top: 4px;
+	border-radius: var(--card_corner_radius);
+	font-size: small;
+	font-weight: normal;
+	color: black;
+	background: linear-gradient(to right, var(--accent) var(--progress), var(--diff_neutral) 0);
+	border: 1.5px solid var(--diff_neutral_outline);
+	border-left: 1.5px solid #946b58;
+	border-right: 1.5px solid #d4d4d3;
+	box-sizing: border-box;
+	filter: brightness(1.1);
+
+	.data {
+		color: var(--text_primary);
+		font-size: 0.9rem;
+		width: fit-content;
+		float: right;
+	}
+
+	.name {
+		font-size: 0.9rem;
+		font-weight: normal;
+	}
+
+}
+
+/*================================================
+				  	  Cards
 ================================================*/
 
 /* statbox grid */
@@ -407,129 +534,52 @@ hr {
 
 }
 
-/* progress lists */
-.progress-list > * {
-    padding-left: 8px;
-	padding-right: 8px;
-	width: 100%;
-	display: block;
-	margin-top: 4px;
-	border-radius: var(--card_corner_radius);
-	font-size: small;
-	font-weight: normal;
-	color: black;
-	background: linear-gradient(to right, var(--accent) var(--progress), var(--diff_neutral) 0);
-	border: 1.5px solid var(--diff_neutral_outline);
-	border-left: 1.5px solid #946b58;
-	border-right: 1.5px solid #d4d4d3;
-	box-sizing: border-box;
-	filter: brightness(1.1);
-
-	.data {
-		color: var(--text_primary);
-		font-size: 0.9rem;
-		width: fit-content;
-		float: right;
-	}
-
-	.name {
-		font-size: 0.9rem;
-		font-weight: normal;
-	}
-
+.card-container {
+    perspective: 1000px; /* 3D perspective for both tilt and flip */
+    width: 300px;
+    height: 200px;
 }
 
-/*================================================
-				  	Timeline
-================================================*/
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out; /* Smooth animation for tilt and flip */
+    border-radius: 10px;
+    background: var(--surface);
+    font-size: 1.5em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    will-change: transform;
 
-.timeline-container {
-	.event { /* event item */
-		position: relative;
-		margin-left: calc(var(--timeline_indent_size) / 2);
-		padding-left: calc(var(--timeline_indent_size) / 2);
-		padding-top: 1rem;
-		padding-bottom: 2rem;
-		border-left: solid 2px var(--divider);
-		border-image: linear-gradient(to bottom, var(--divider) 1%, var(--divider) 15%);
-		border-image-slice: 1 !important;
+	/* Flip the card on click */
+	.flipped {
+		transform: rotateY(180deg); /* Flip to show the back */
+	}
 
-		/* event title */
-		.title:not(span) {
-			position: relative;
-			padding-bottom: 1rem;
-		}
+	.back {
+		transform: rotateY(180deg); /* Hide the back initially */
+	}
 
-		/* event date text */
-		.date {
-			color: var(--text_low_emphasis);
-		}
+	.front {
 
-		/* event content */
-		.content {
+		div {
 			display: flex;
-			gap: 2rem;
-		}
-		.content .text {
-			flex: 1;
-		}
-
-		/* event image gallery */
-		.gallery {
-			z-index: 1;
-			height: fit-content;
-			align-items: center;
-			display: flex;
-			padding-bottom: 2rem;
-			justify-content: space-evenly;
-			gap: 12px;
-			position: relative;
-			img {
-				object-fit: cover;
-				max-block-size: 270px;
-				border-radius: var(--card_corner_radius);
-				box-shadow: 0px 0px 5px 5px var(--shadow);
-				max-width: 270px;
-			}
-		}
-		
-	}
-
-	.highlight.event { /* highlighted event */
-		/* highlighted event pip */
-		.title:not(span)::before {
-			width: calc(var(--timeline_pip_size) * 1.5);
-			height: calc(var(--timeline_pip_size) * 1.5);
-			left: -2.3rem;
-			top: 42%;
-			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 50% 80%, 80% 50%, 50% 20%, 20% 50%, 50% 80%, 50% 65%, 35% 50%, 50% 35%, 65% 50%, 50% 65%, 50% 100%, 0 50%);
+			flex-direction: column;
 		}
 	}
-
-	/* timeline pip */
-	.event .title:not(span)::before {
-		content: "";
-		background-color: var(--accent);
-		width: var(--timeline_pip_size);
-		height: var(--timeline_pip_size);
-		position: absolute;
-		display: inline-block;
-		vertical-align: middle;
-		line-height: normal;
-		left: -2.05rem;
-		top: 45%;
-		clip-path: polygon(50% 0, 0 50%, 50% 100%, 50% 60%, 40% 50%, 50% 40%, 60% 50%, 50% 60%, 50% 100%, 100% 50%);
-	}
-
-	/* timeline line */
-	.event:first-child {
-		border-image: linear-gradient(to bottom, transparent 1%, var(--divider) 15%);
-	}
-	.event:last-child {
-		border-image: linear-gradient(to top, transparent 1%, var(--divider) 15%);
-	}
-	.event.spacer {
-		height: 70dvh;
-	}
-
 }
+
+.card-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide back content until flipped */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+	cursor: pointer;
+}
+
+
