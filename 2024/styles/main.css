@@ -590,6 +590,7 @@ hr {
 }
 
 dialog {
+	display: none;
 	width: 100%;
 	height: 100%;
 	border: none;
@@ -598,6 +599,8 @@ dialog {
 	justify-content: center;
 	align-items: center;
 	padding: 0;
+	opacity: 0;
+    transition: opacity 0.2s ease-in-out;
 }
 
 dialog img {
@@ -606,15 +609,13 @@ dialog img {
 	border: 2px solid white;
 }
 dialog[open] {
-	animation: fadeIn 0.3s ease-in-out;
+    display: flex;
+    opacity: 1; /* Fade in */
 }
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+
+dialog.closing {
+    opacity: 0; /* Fade out */
+    pointer-events: none; /* Prevent interaction during animation */
 }
 
 

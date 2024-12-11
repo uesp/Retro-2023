@@ -73,5 +73,10 @@ document.addEventListener('keydown', (event) => {
 });
 
 function closeLightbox() {
-	lightbox.close();
+    lightbox.classList.add('closing');
+    setTimeout(() => {
+        lightbox.close();
+        lightbox.removeAttribute('open');
+        lightbox.classList.remove('closing');
+    }, 300); // Match the animation duration
 }
