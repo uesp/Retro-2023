@@ -42,11 +42,11 @@
 /* wiki logo font */
 @font-face {
 	font-family: 'wikiType';
-	src: url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('embedded-opentype'), /* Internet Explorer */
-		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff2'),             /* Super Modern Browsers */
-		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff'),              /* Pretty Modern Browsers */
-		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('truetype'),          /* Safari, Android, iOS */
-		 url('assets/fonts/Goudy_Medieval_Alternate.ttf') format('svg');               /* Legacy iOS */
+	src: url('../assets/fonts/Goudy_Medieval_Alternate.ttf') format('embedded-opentype'), /* Internet Explorer */
+		 url('../assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff2'),             /* Super Modern Browsers */
+		 url('../assets/fonts/Goudy_Medieval_Alternate.ttf') format('woff'),              /* Pretty Modern Browsers */
+		 url('../assets/fonts/Goudy_Medieval_Alternate.ttf') format('truetype'),          /* Safari, Android, iOS */
+		 url('../assets/fonts/Goudy_Medieval_Alternate.ttf') format('svg');               /* Legacy iOS */
 	font-display: swap;
 }
 .wikiTitle{
@@ -54,8 +54,13 @@
 }
 
 /*================================================
-					  Header
+					  Banner
 ================================================*/
+
+html, body {
+    height: 100%;
+    overflow: auto;
+}
 
 /* header */
 header {
@@ -66,44 +71,25 @@ header {
 	color: #fafafa;
 	text-shadow: 0px 0px 25px black !important;
 	position: relative;
-	transform-style: preserve-3d;
-	-webkit-transform-style: preserve-3d;
 	--text_heading: white;
 }
-body {
-	width: 100dvw;
-	height: 100dvh;
-	overflow-x: hidden;
-	overflow-y: auto;
-	perspective: 1px;
-	-webkit-perspective: 1px;
-	transform-style: preserve-3d;
-	-webkit-transform-style: preserve-3d;
-}
 
-/* header image */
-header:after {
-	background-image: url(../assets/images/patreon-banner-2020.png);
+
+/* banner image */
+.banner {
+	background-image: url(../assets/images/UESP_Wallpaper_TES_Updated.png);
 	background-repeat:no-repeat;
 	background-position: center center;
 	background-size: cover;	
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
-	z-index: -1;
-	content: "";
-	transform: translateZ(-1px) scale(2);
-	-webkit-transform: translateZ(-1px) scale(2);
+	background-attachment: fixed;
 }
 
 /* header title */
 header #title{
-	position: relative;
+	position: fixed;
 	place-self: center;
 	place-content: center;
 	justify-self: center;
@@ -112,6 +98,7 @@ header #title{
 	font-size: clamp(4rem, 10vw, 6.5rem); 
 	text-align: center;
 	line-height: 1.1;
+	pointer-events: none;
 }
 
 /* header shade */
