@@ -18,7 +18,7 @@
 	
 	/* surface colours */
 	--surface: #faf4e6;
-	--background: #f2e5cd;
+	--background: #0A080A;
 	--shadow: rgba(0, 0, 0, 0.049);
 	--accent: #ae7b63;
 	--divider: rgba(103, 103, 103, 0.328);
@@ -62,6 +62,11 @@ html, body {
     overflow: auto;
 }
 
+body {
+	background-color: var(--background);
+	overflow-x: clip;
+}
+
 /* header */
 header {
 	height: calc(100vh + var(--article_shade_height));
@@ -78,7 +83,7 @@ header {
 /* banner image */
 .banner {
 	background-image: url(../assets/images/UESP_Wallpaper_TES_Updated.png);
-	background-repeat:no-repeat;
+	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;	
 	background-repeat: no-repeat;
@@ -99,6 +104,9 @@ header #title{
 	text-align: center;
 	line-height: 1.1;
 	pointer-events: none;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
 }
 
 /* header shade */
@@ -151,7 +159,7 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 	font-weight: normal;
 	color: rgba(0, 0, 0, 0.87);
-	background-color: var(--background);
+	background-color: #0A080A;
 }
 main {
 	background-image: url(../assets/images/img_background.webp);
@@ -606,3 +614,54 @@ dialog.closing {
 }
 
 
+.paper-tear {
+    position: absolute;
+	z-index: 11; /* Ensure this is higher than the z-index of main.content::before */
+	top: 0;
+	left: -1rem;
+    width: 120dvw;
+    margin: 0 calc(50% - 50vw);
+    .tear {
+    	overflow: hidden;
+		height: 15px;
+    	background: #f2e2c3;
+		/* tear clip path */
+    	clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 98% 80%, 98% 90%, 90% 60%, 86% 98%, 78% 60%, 76% 99%, 69% 94%, 64% 80%, 61% 75%, 57% 50%, 48% 98%, 46% 76%, 39% 50%, 33% 97%, 28% 80%, 27% 98%, 22% 69%, 13% 85%, 8% 67%, 2% 97%, 0% 100%);
+    }
+}
+
+.paper-tear.flip {
+	rotate: 180deg;
+	top: unset;
+	bottom: 0;
+	filter: unset;
+}
+
+.content {
+	/* ...existing code... */
+	position: relative;
+}
+
+.paper-tear {
+	position: absolute;
+	z-index: 11; /* Ensure this is higher than the z-index of main.content::before */
+	top: -15px; /* Adjust this value to position the tear correctly */
+	left: -1rem;
+	width: 120dvw;
+	margin: 0 calc(50% - 50vw);
+	background: none; /* Ensure no background color is set */
+	.tear {
+		overflow: hidden;
+		height: 15px;
+		background: #f2e2c3;
+		/* tear clip path */
+		clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 98% 20%, 98% 10%, 90% 40%, 86% 2%, 78% 40%, 76% 1%, 69% 6%, 64% 20%, 61% 25%, 57% 50%, 48% 2%, 46% 24%, 39% 50%, 33% 3%, 28% 20%, 27% 2%, 22% 31%, 13% 15%, 8% 33%, 2% 3%, 0% 0%);
+	}
+}
+
+.paper-tear.flip {
+	rotate: 180deg;
+	top: unset;
+	bottom: 0;
+	filter: unset;
+}
