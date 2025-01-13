@@ -1,20 +1,30 @@
+// Variables
 window.dataLayer = window.dataLayer || [];
+const cardContainer = document.querySelector('.card-container');
+const card = document.querySelector('.card');
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+let isFlipped = false;
+
+// Functions
 function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-GY6DBN7NTF');
-
 function scrollDown() {
 	document.getElementById("intro").scrollIntoView({ behavior: 'smooth'});
 }
+function openLightbox(image) {
+	lightboxImage.src = image.src;
+	lightbox.showModal();
+}
+function closeLightbox() {
+    lightbox.classList.add('closing');
+    setTimeout(() => {
+        lightbox.close();
+        lightbox.removeAttribute('open');
+        lightbox.classList.remove('closing');
+    }, 300); // Match the animation duration
+}
 
-
-const cardContainer = document.querySelector('.card-container');
-const card = document.querySelector('.card');
-
-let isFlipped = false;
-
-// Tilt effect on mousemove
+// Event Listeners
 cardContainer.addEventListener('mousemove', (e) => {
     const rect = cardContainer.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -30,15 +40,11 @@ cardContainer.addEventListener('mousemove', (e) => {
         card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     }
 });
-
-// Reset tilt effect on mouse leave
 cardContainer.addEventListener('mouseleave', () => {
     if (!isFlipped) {
         card.style.transform = 'rotateX(0deg) rotateY(0deg)';
     }
 });
-
-// Flip card on click
 cardContainer.addEventListener('click', () => {
     isFlipped = !isFlipped;
 
@@ -51,32 +57,51 @@ cardContainer.addEventListener('click', () => {
         card.style.transform = 'rotateX(0deg) rotateY(0deg)'; // Reset tilt when unflipping
     }
 });
-
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-
-function openLightbox(image) {
-	lightboxImage.src = image.src;
-	lightbox.showModal();
-}
-
 lightbox.addEventListener('click', (event) => {
 	if (event.target === lightbox) {
 		closeLightbox();
 	}
 });
-
 document.addEventListener('keydown', (event) => {
 	if (event.key === 'Escape') {
 		closeLightbox();
 	}
 });
 
-function closeLightbox() {
-    lightbox.classList.add('closing');
-    setTimeout(() => {
-        lightbox.close();
-        lightbox.removeAttribute('open');
-        lightbox.classList.remove('closing');
-    }, 300); // Match the animation duration
-}
+document.addEventListener('DOMContentLoaded', () => {
+	const title = document.getElementById('title');
+
+	title.addEventListener('mouseover', (event) => {
+		event.target.style.pointerEvents = 'none';
+		const belowElement = document.elementFromPoint(event.clientX, event.clientY);
+		event.target.style.pointerEvents = 'auto';
+		if (belowElement) {
+			const hoverEvent = new MouseEvent('mouseover', {
+				bubbles: true,
+				cancelable: true,
+				clientX: event.clientX,
+				clientY: event.clientY
+			});
+			belowElement.dispatchEvent(hoverEvent);
+		}
+	});
+
+	title.addEventListener('click', (event) => {
+		event.target.style.pointerEvents = 'none';
+		const belowElement = document.elementFromPoint(event.clientX, event.clientY);
+		event.target.style.pointerEvents = 'auto';
+		if (belowElement) {
+			const clickEvent = new MouseEvent('click', {
+				bubbles: true,
+				cancelable: true,
+				clientX: event.clientX,
+				clientY: event.clientY
+			});
+			belowElement.dispatchEvent(clickEvent);
+		}
+	});
+});
+
+// Initialization
+gtag('js', new Date());
+gtag('config', 'G-GY6DBN7NTF');
