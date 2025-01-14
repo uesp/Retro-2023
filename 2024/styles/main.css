@@ -92,7 +92,7 @@ header {
 		transform: translateX(-50%);
 		white-space: nowrap;
 		transition: opacity 0.3s ease-in-out;
-		user-select: none;
+		pointer-events: none;
 
 		h1, h5 {
 			opacity: 0;
@@ -110,10 +110,6 @@ header {
 		h5:nth-of-type(2) {
 			animation-delay: 0.1s;
 		}
-	}
-
-	#title:hover {
-		opacity: 0.3;
 	}
 }
 
