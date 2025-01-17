@@ -18,8 +18,9 @@
 	
 	/* surface colours */
 	--surface: #faf4e6;
-	--paper: #f2e2c3;
+	--paper: #F4E7C9;
 	--background: #0A080A;
+	--toast: #000000bb;
 	--shadow: rgba(0, 0, 0, 0.049);
 	--accent: #ae7b63;
 	--divider: rgba(103, 103, 103, 0.328);
@@ -54,12 +55,19 @@
 	font-family: 'wikiType', Arial, sans-serif;
 }
 
+
+html, body {
+	height: 100%;
+	overflow: hidden; /* Prevent vertical overflow caused by dynamic scaling */
+}
+
 /*================================================
 					  Banner
 ================================================*/
 body {
 	background-color: var(--background);
 	overflow-x: clip;
+	overflow-y: scroll;
 }
 
 /* header */
@@ -108,16 +116,42 @@ header {
 	}
 }
 
+/* blur effect */
+#blur {
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh; /* Full height of the banner */
+	backdrop-filter: blur(9px);
+	pointer-events: none;;
+}
+
 /* banner image */
 .banner {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden; /* Prevent the pseudo-element from overflowing */
+}
+
+.banner::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	background-image: url(../assets/images/UESP_Wallpaper_TES_Updated.png);
 	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;	
-	background-repeat: no-repeat;
 	background-position: center;
+	background-attachment: fixed; /* Keep background static */
 	background-size: cover;
-	background-attachment: fixed;
+	transform: scale(1.1); /* Start zoomed in */
+	transition: transform 0.2s ease-out; /* Smooth effect */
+	will-change: transform; /* Optimize rendering */
+	z-index: -1; /* Place behind content */
 }
 
 /* header shade */
@@ -217,7 +251,7 @@ a:hover {
 }
 article {
 	max-width: 700px;
-  	padding: 7rem 2em;
+  	padding: 6rem 2em;
   	margin: auto;
 }
 
@@ -264,6 +298,7 @@ hr {
 		.title:not(span) {
 			position: relative;
 			padding-bottom: 1rem;
+			left: 0px;
 		}
 
 		/* event date text */
@@ -707,4 +742,43 @@ dialog {
 	top: unset;
 	bottom: 0;
 	filter: unset;
+}
+
+#infobox {
+	height: fit-content;
+	width: fit-content;
+	position: fixed;
+	bottom: 3%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: var(--toast);
+	border-radius: 100vmax;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	pointer-events: none;
+	
+	* {
+		color: white; /* Adjust text color to contrast with the background */
+		height: fit-content;
+	}
+
+	.info {
+		padding-right: 16px;
+	}
+
+	.icon {
+		flex: 0 0 auto; /* Prevents the icon from stretching */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: fit-content;
+		width: fit-content;
+		border-radius: 50%; /* Makes the icon circular */
+		padding-left: 8px;
+
+		* {
+			font-size: 3rem;
+		}
+	}
 }

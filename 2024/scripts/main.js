@@ -25,38 +25,38 @@ function closeLightbox() {
 }
 
 // Event Listeners
-cardContainer.addEventListener('mousemove', (e) => {
-    const rect = cardContainer.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+// cardContainer.addEventListener('mousemove', (e) => {
+//     const rect = cardContainer.getBoundingClientRect();
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+//     const centerX = rect.width / 2;
+//     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
+//     const rotateX = ((y - centerY) / centerY) * -10;
+//     const rotateY = ((x - centerX) / centerX) * 10;
 
-    if (!isFlipped) {
-        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    }
-});
-cardContainer.addEventListener('mouseleave', () => {
-    if (!isFlipped) {
-        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    }
-});
-cardContainer.addEventListener('click', () => {
-    isFlipped = !isFlipped;
+//     if (!isFlipped) {
+//         card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+//     }
+// });
+// cardContainer.addEventListener('mouseleave', () => {
+//     if (!isFlipped) {
+//         card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+//     }
+// });
+// cardContainer.addEventListener('click', () => {
+//     isFlipped = !isFlipped;
 
-    if (isFlipped) {
-        card.classList.add('flipped');
-        // Ensure tilt is disabled after flipping
-        card.style.transform = 'rotateY(180deg)';
-    } else {
-        card.classList.remove('flipped');
-        card.style.transform = 'rotateX(0deg) rotateY(0deg)'; // Reset tilt when unflipping
-    }
-});
+//     if (isFlipped) {
+//         card.classList.add('flipped');
+//         // Ensure tilt is disabled after flipping
+//         card.style.transform = 'rotateY(180deg)';
+//     } else {
+//         card.classList.remove('flipped');
+//         card.style.transform = 'rotateX(0deg) rotateY(0deg)'; // Reset tilt when unflipping
+//     }
+// });
 lightbox.addEventListener('click', (event) => {
 	if (event.target === lightbox) {
 		closeLightbox();
@@ -106,8 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
 gtag('js', new Date());
 gtag('config', 'G-GY6DBN7NTF');
 
+window.addEventListener('load', () => {
+	document.body.scrollTop = 0; // For Safari
+	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+});
 
-
-window.onbeforeunload = function () {
-	window.scrollTo(0, 0);
-};
+document.body.addEventListener('scroll', () => {
+	console.log("hello");
+	const blurDiv = document.getElementById('blur');
+	const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+	const vh = window.innerHeight; // Viewport height in pixels
+	const opacity = Math.min(scrollPosition / (vh/2), 1); // Normalize to 1 vh
+	blurDiv.style.opacity = opacity;
+});
