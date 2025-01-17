@@ -105,3 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // Initialization
 gtag('js', new Date());
 gtag('config', 'G-GY6DBN7NTF');
+
+
+
+window.onbeforeunload = function () {
+	window.scrollTo(0, 0);
+};
