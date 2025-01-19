@@ -303,6 +303,12 @@ hr {
 			position: relative;
 			padding-bottom: 1rem;
 			left: 0px;
+
+			h2 {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
 		}
 
 		/* event date text */
@@ -835,6 +841,7 @@ dialog {
 			color: black;
 			font-size: large;
 			margin-bottom: 0.3rem;
+			white-space: nowrap;
 		}
 
 		.description {
@@ -846,6 +853,7 @@ dialog {
 			text-overflow: ellipsis; /* Adds "..." for overflowed text */
 			display: -webkit-box; /* Required for webkit-based browsers */
 			-webkit-line-clamp: 2; /* Limits the text to 2 lines */
+			line-clamp: 2; /* Standard property for compatibility */
 			-webkit-box-orient: vertical; /* Required for webkit-based browsers */
 			white-space: normal; /* Ensure wrapping */
 		}
