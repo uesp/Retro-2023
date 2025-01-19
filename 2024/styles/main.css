@@ -247,10 +247,16 @@ a:hover {
 	z-index: 99;
 	position: relative;
 }
+
 article {
 	max-width: 700px;
   	padding: 6rem 2em;
   	margin: auto;
+
+	h2 {
+		margin-top: 1rem; /* Add more breathing room above */
+		margin-bottom: 1rem; /* Add more breathing room below */
+	}
 }
 
 /* sections */
@@ -839,12 +845,11 @@ dialog {
 			overflow: hidden;
 			text-overflow: ellipsis; /* Adds "..." for overflowed text */
 			display: -webkit-box; /* Required for webkit-based browsers */
-			line-clamp: 2; /* Limits the text to 2 lines */
+			-webkit-line-clamp: 2; /* Limits the text to 2 lines */
 			-webkit-box-orient: vertical; /* Required for webkit-based browsers */
 			white-space: normal; /* Ensure wrapping */
 		}
 	}
-
 
 	.card {
 		pointer-events: none;
