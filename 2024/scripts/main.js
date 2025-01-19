@@ -106,11 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
 gtag('js', new Date());
 gtag('config', 'G-GY6DBN7NTF');
 
-window.addEventListener('load', () => {
-	document.body.scrollTop = 0; // For Safari
-	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
-});
-
 document.body.addEventListener('scroll', () => {
 	const blurDiv = document.getElementById('blur');
 	const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
