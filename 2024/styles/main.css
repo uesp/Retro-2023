@@ -34,7 +34,7 @@
 	/* text colours */
 	--text_primary: black;
 	--text_heading: black;
-	--text_low_emphasis: #5b5b5b;
+	--text_low_emphasis: #ffffffce;
 }
 
 /*================================================
@@ -757,14 +757,27 @@ dialog {
 	align-items: center;
 	gap: 8px;
 	pointer-events: none;
+	padding: 4px;
+	white-space: nowrap;
 	
 	* {
+		margin: 0; /* Remove default margins */
 		color: white; /* Adjust text color to contrast with the background */
 		height: fit-content;
 	}
 
 	.info {
 		padding-right: 16px;
+		display: flex; /* Flex layout for text alignment */
+		flex-direction: column; /* Stack text elements */
+		justify-content: center; /* Center-align text within the column */
+
+		p {
+			font-size: 0.9em;
+			position: relative;
+			top: -2.5px;
+			color: var(--text_low_emphasis);
+		}
 	}
 
 	.icon {
@@ -775,10 +788,10 @@ dialog {
 		height: fit-content;
 		width: fit-content;
 		border-radius: 50%; /* Makes the icon circular */
-		padding-left: 8px;
+		padding-left: 4px;
 
 		* {
-			font-size: 3rem;
+			font-size: 2.6rem;
 		}
 	}
 }

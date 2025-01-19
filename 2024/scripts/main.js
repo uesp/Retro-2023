@@ -112,7 +112,6 @@ window.addEventListener('load', () => {
 });
 
 document.body.addEventListener('scroll', () => {
-	console.log("hello");
 	const blurDiv = document.getElementById('blur');
 	const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
 	const vh = window.innerHeight; // Viewport height in pixels
