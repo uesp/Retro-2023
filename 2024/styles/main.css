@@ -132,6 +132,7 @@ header {
 	width: 100vw;
 	height: 101vh;
 	overflow: hidden; /* Prevent the pseudo-element from overflowing */
+	--banner-before-background: url(../assets/images/UESP_Wallpaper_TES_Updated.png);
 }
 
 .banner::before {
@@ -141,7 +142,7 @@ header {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url(../assets/images/UESP_Wallpaper_TES_Updated.png);
+	background-image: var(--banner-before-background);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed; /* Keep background static */
@@ -916,3 +917,50 @@ dialog {
 	flex-direction: column;
 	gap: 12px;
 }
+
+/*================================================
+				  Starfield Segment
+================================================*/
+
+/* starfield segment padding */
+.starfield {
+	--article_shade_height: 20dvh;
+	--text_primary: #d0d0d0;
+	--text_heading: #e1e1e1;
+	--background: #0C161E;
+	--background_dark: #090E18;
+	--shadow: rgba(0, 0, 0, 0.049);
+	--accent: #4C99B9 !important;
+	--divider: rgba(103, 103, 103, 0.328);
+	--text_low_emphasis: #a4a4a4 !important;
+	--divider: rgba(255, 255, 255, 0.2);
+	--surface: #131f28;
+
+	padding-top: 5rem !important;
+	padding-bottom: 5rem !important;
+	border-image: linear-gradient(to bottom, rgba(103, 103, 103, 0.328) 0%, var(--divider) 5%, var(--divider) 98%, rgba(103, 103, 103, 0.328) 90%) !important;
+}
+.starfield::after {
+	width: 120dvw;
+	background: url(//images.starfieldwiki.net/backgrounds/lines_transparent_075.png) no-repeat,linear-gradient(var(--background),var(--background_dark));
+	position: absolute;
+	left: -4rem;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center center !important;
+	background-size: cover;
+	height: 100%;
+	margin: 0 calc(50% - 50vw);
+	z-index: -2;
+	top: 0;
+	content: "";
+}
+
+/* adjaacent events padding */
+.event:has(+ .starfield) {
+	padding-bottom: 3rem;
+}
+.starfield + .event { 
+	padding-top: 3rem;
+}
+
