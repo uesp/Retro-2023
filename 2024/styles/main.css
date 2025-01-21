@@ -130,7 +130,7 @@ header {
 .banner {
 	position: relative;
 	width: 100vw;
-	height: 100vh;
+	height: 101vh;
 	overflow: hidden; /* Prevent the pseudo-element from overflowing */
 }
 
