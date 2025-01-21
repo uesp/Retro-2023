@@ -54,21 +54,10 @@
 }
 
 
-html, body {
-	height: 100%;
-	overflow: hidden; /* Prevent vertical overflow caused by dynamic scaling */
-}
-
 /*================================================
 					  Banner
 ================================================*/
-body {
-	background-color: var(--background);
-	overflow-x: clip;
-	overflow-y: scroll;
-}
 
-/* header */
 header {
 	height: calc(100vh + var(--article_shade_height));
 	width: 100dvw;
@@ -214,13 +203,22 @@ main.content::before {
 ================================================*/
 
 /* body */
+html, body {
+	height: 100%;
+	overflow: hidden; /* Prevent vertical overflow caused by dynamic scaling */
+}
+
 body {
+	background-color: var(--background);
+	overflow-x: clip;
+	overflow-y: scroll;
 	line-height: 1.5;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 	font-weight: normal;
 	color: rgba(0, 0, 0, 0.87);
 	background-color: #0A080A;
 }
+
 main {
 	background-image: url(../assets/images/img_background.webp);
 	background-color: var(--paper);
@@ -387,38 +385,51 @@ hr {
 }
 
 /*================================================
-				  	  Progress Lists
+				  Starfield Segment
 ================================================*/
 
-.progress-list > * {
-    padding-left: 8px;
-	padding-right: 8px;
-	width: 100%;
-	display: block;
-	margin-top: 4px;
-	border-radius: var(--card_corner_radius);
-	font-size: small;
-	font-weight: normal;
-	color: black;
-	background: linear-gradient(to right, var(--accent) var(--progress), var(--diff_neutral) 0);
-	border: 1.5px solid var(--diff_neutral_outline);
-	border-left: 1.5px solid #946b58;
-	border-right: 1.5px solid #d4d4d3;
-	box-sizing: border-box;
-	filter: brightness(1.1);
+/* starfield segment padding */
+.starfield {
+	--article_shade_height: 20dvh;
+	--text_primary: #d0d0d0;
+	--text_heading: #e1e1e1;
+	--background: #0C161E;
+	--background_dark: #090E18;
+	--shadow: rgba(0, 0, 0, 0.049);
+	--accent: #4C99B9 !important;
+	--divider: rgba(103, 103, 103, 0.328);
+	--text_low_emphasis: #a4a4a4 !important;
+	--divider: rgba(255, 255, 255, 0.2);
+	--surface: #131f28;
 
-	.data {
-		color: var(--text_primary);
-		font-size: 0.9rem;
-		width: fit-content;
-		float: right;
-	}
-
-	.name {
-		font-size: 0.9rem;
-		font-weight: normal;
-	}
+	padding-top: 5rem !important;
+	padding-bottom: 5rem !important;
+	border-image: linear-gradient(to bottom, rgba(103, 103, 103, 0.328) 0%, var(--divider) 5%, var(--divider) 98%, rgba(103, 103, 103, 0.328) 90%) !important;
 }
+.starfield::after {
+	width: 120dvw;
+	background: url(//images.starfieldwiki.net/backgrounds/lines_transparent_075.png) no-repeat,linear-gradient(var(--background),var(--background_dark));
+	position: absolute;
+	left: -4rem;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center center !important;
+	background-size: cover;
+	height: 100%;
+	margin: 0 calc(50% - 50vw);
+	z-index: -2;
+	top: 0;
+	content: "";
+}
+
+/* adjaacent events padding */
+.event:has(+ .starfield) {
+	padding-bottom: 3rem;
+}
+.starfield + .event { 
+	padding-top: 3rem;
+}
+
 
 /*================================================
 				  	  Cards
@@ -560,204 +571,6 @@ hr {
 .statbox .diff span.down::before {
 	content: "▼ ";
 	color: var(--diff_down_outline);
-}
-
-/*================================================
-				  	  Mobile
-================================================*/
-
-.mobile {
-	display: none;
-}
-
-@media only screen and (max-width: 900px) {
-	* {
-		--breakout_margin: 3em;
-	}
-}
-
-@media only screen and (max-width: 800px) {
-	.statbox {
-		scale: 0.90;
-	}
-}
-
-@media only screen and (max-width: 715px) {
-	.statbox-container {
-		width: 100% !important;
-		margin: 0;
-		padding: 0;
-		margin-bottom: 2rem;
-	}
-
-	.statbox {
-		width:  fit-content !important;
-		max-width: unset !important;
-	}
-
-	.statbox-container >  :not(.highlight) {
-		scale: 1 !important;
-	}
-	.statbox-container > .highlight {
-		scale: 0.99;
-	}
-	.statbox-container {
-		scale: 0.95;
-	}
-
-	article {
-		padding: 7rem 1em;
-	}
-
-	.timeline-container .event .content {
-		flex-direction: column !important;
-	}
-}
-
-/*================================================
-				  	  Card Effects
-================================================*/
-
-.card-container {
-    perspective: 1000px; /* 3D perspective for both tilt and flip */
-    width: 300px;
-    height: 200px;
-}
-
-.card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease-out; /* Smooth animation for tilt and flip */
-    border-radius: 10px;
-    background: var(--surface);
-    font-size: 1.5em;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    will-change: transform;
-
-	/* Flip the card on click */
-	.flipped {
-		transform: rotateY(180deg); /* Flip to show the back */
-	}
-
-	.back {
-		transform: rotateY(180deg); /* Hide the back initially */
-	}
-
-	.front {
-		div {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-	}
-}
-
-.card-content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Hide back content until flipped */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-	cursor: pointer;
-}
-
-/*================================================
-				  	  Gallery
-================================================*/
-
-.gallery img {
-	height: auto;
-}
-
-dialog {
-	display: none;
-	width: 100%;
-	height: 100%;
-	border: none;
-	background: rgba(0, 0, 0, 0.8);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0;
-	opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-
-	img {
-		max-width: 90%;
-		max-height: 90%;
-		border: 2px solid white;
-	}
-
-	&[open] {
-		display: flex;
-		opacity: 1; /* Fade in */
-	}
-
-	&.closing {
-		opacity: 0; /* Fade out */
-		pointer-events: none; /* Prevent interaction during animation */
-	}
-}
-
-/*================================================
-				  	  Paper Tear
-================================================*/
-
-.paper-tear {
-    position: absolute;
-	z-index: 11; /* Ensure this is higher than the z-index of main.content::before */
-	top: 0;
-	left: -1rem;
-    width: 120dvw;
-    margin: 0 calc(50% - 50vw);
-
-	.tear {
-		overflow: hidden;
-		height: 15px;
-		background: var(--paper);
-		/* tear clip path */
-		clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 98% 80%, 98% 90%, 90% 60%, 86% 98%, 78% 60%, 76% 99%, 69% 94%, 64% 80%, 61% 75%, 57% 50%, 48% 98%, 46% 76%, 39% 50%, 33% 97%, 28% 80%, 27% 98%, 22% 69%, 13% 85%, 8% 67%, 2% 97%, 0% 100%);
-	}
-}
-
-.paper-tear.flip {
-	rotate: 180deg;
-	top: unset;
-	bottom: 0;
-	filter: unset;
-}
-
-.content {
-	position: relative;
-}
-
-.paper-tear {
-	position: absolute;
-	z-index: 11; /* Ensure this is higher than the z-index of main.content::before */
-	top: -15px; /* Adjust this value to position the tear correctly */
-	left: -1rem;
-	width: 120dvw;
-	margin: 0 calc(50% - 50vw);
-	background: none; /* Ensure no background color is set */
-	.tear {
-		overflow: hidden;
-		height: 15px;
-		background: #f2e2c3;
-		/* tear clip path */
-		clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 98% 20%, 98% 10%, 90% 40%, 86% 2%, 78% 40%, 76% 1%, 69% 6%, 64% 20%, 61% 25%, 57% 50%, 48% 2%, 46% 24%, 39% 50%, 33% 3%, 28% 20%, 27% 2%, 22% 31%, 13% 15%, 8% 33%, 2% 3%, 0% 0%);
-	}
-}
-
-.paper-tear.flip {
-	rotate: 180deg;
-	top: unset;
-	bottom: 0;
-	filter: unset;
 }
 
 #infobox {
@@ -919,48 +732,115 @@ dialog {
 }
 
 /*================================================
-				  Starfield Segment
+				Progress Lists
 ================================================*/
 
-/* starfield segment padding */
-.starfield {
-	--article_shade_height: 20dvh;
-	--text_primary: #d0d0d0;
-	--text_heading: #e1e1e1;
-	--background: #0C161E;
-	--background_dark: #090E18;
-	--shadow: rgba(0, 0, 0, 0.049);
-	--accent: #4C99B9 !important;
-	--divider: rgba(103, 103, 103, 0.328);
-	--text_low_emphasis: #a4a4a4 !important;
-	--divider: rgba(255, 255, 255, 0.2);
-	--surface: #131f28;
+.progress-list > * {
+    padding-left: 8px;
+	padding-right: 8px;
+	width: 100%;
+	display: block;
+	margin-top: 4px;
+	border-radius: var(--card_corner_radius);
+	font-size: small;
+	font-weight: normal;
+	color: black;
+	background: linear-gradient(to right, var(--accent) var(--progress), var(--diff_neutral) 0);
+	border: 1.5px solid var(--diff_neutral_outline);
+	border-left: 1.5px solid #946b58;
+	border-right: 1.5px solid #d4d4d3;
+	box-sizing: border-box;
+	filter: brightness(1.1);
 
-	padding-top: 5rem !important;
-	padding-bottom: 5rem !important;
-	border-image: linear-gradient(to bottom, rgba(103, 103, 103, 0.328) 0%, var(--divider) 5%, var(--divider) 98%, rgba(103, 103, 103, 0.328) 90%) !important;
+	.data {
+		color: var(--text_primary);
+		font-size: 0.9rem;
+		width: fit-content;
+		float: right;
+	}
+
+	.name {
+		font-size: 0.9rem;
+		font-weight: normal;
+	}
 }
-.starfield::after {
-	width: 120dvw;
-	background: url(//images.starfieldwiki.net/backgrounds/lines_transparent_075.png) no-repeat,linear-gradient(var(--background),var(--background_dark));
-	position: absolute;
-	left: -4rem;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center center !important;
-	background-size: cover;
-	height: 100%;
-	margin: 0 calc(50% - 50vw);
-	z-index: -2;
+
+/*================================================
+				  	  Paper Tear
+================================================*/
+
+.paper-tear {
+    position: absolute;
+	z-index: 11; /* Ensure this is higher than the z-index of main.content::before */
 	top: 0;
-	content: "";
+	left: -1rem;
+    width: 120dvw;
+    margin: 0 calc(50% - 50vw);
+
+	.tear {
+		overflow: hidden;
+		height: 15px;
+		background: var(--paper);
+		/* tear clip path */
+		clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 98% 80%, 98% 90%, 90% 60%, 86% 98%, 78% 60%, 76% 99%, 69% 94%, 64% 80%, 61% 75%, 57% 50%, 48% 98%, 46% 76%, 39% 50%, 33% 97%, 28% 80%, 27% 98%, 22% 69%, 13% 85%, 8% 67%, 2% 97%, 0% 100%);
+	}
 }
 
-/* adjaacent events padding */
-.event:has(+ .starfield) {
-	padding-bottom: 3rem;
-}
-.starfield + .event { 
-	padding-top: 3rem;
+.paper-tear.flip {
+	rotate: 180deg;
+	top: unset;
+	bottom: 0;
+	filter: unset;
 }
 
+/*================================================
+				  	  Mobile
+================================================*/
+
+.mobile {
+	display: none;
+}
+
+@media only screen and (max-width: 900px) {
+	* {
+		--breakout_margin: 3em;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.statbox {
+		scale: 0.90;
+	}
+}
+
+@media only screen and (max-width: 715px) {
+	.statbox-container {
+		width: 100% !important;
+		margin: 0;
+		padding: 0;
+		margin-bottom: 2rem;
+	}
+
+	.statbox {
+		width:  fit-content !important;
+		max-width: unset !important;
+	}
+
+	.statbox-container >  :not(.highlight) {
+		scale: 1 !important;
+	}
+	.statbox-container > .highlight {
+		scale: 0.99;
+	}
+	.statbox-container {
+		scale: 0.95;
+	}
+
+	article {
+		padding: 7rem 1em;
+	}
+
+	.timeline-container .event .content {
+		flex-direction: column !important;
+	}
+}
