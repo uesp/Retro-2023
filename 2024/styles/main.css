@@ -283,6 +283,34 @@ hr {
 }
 
 /*================================================
+				  	  Paper Tear
+================================================*/
+
+.paper-tear {
+    position: absolute;
+	z-index: -1;
+	top: 0;
+	left: -1rem;
+    width: 120dvw;
+    margin: 0 calc(50% - 50vw);
+
+	.tear {
+		overflow: hidden;
+		height: 15px;
+		background: var(--paper);
+		/* tear clip path */
+		clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 98% 80%, 98% 90%, 90% 60%, 86% 98%, 78% 60%, 76% 99%, 69% 94%, 64% 80%, 61% 75%, 57% 50%, 48% 98%, 46% 76%, 39% 50%, 33% 97%, 28% 80%, 27% 98%, 22% 69%, 13% 85%, 8% 67%, 2% 97%, 0% 100%);
+	}
+}
+
+.paper-tear.flip {
+	rotate: 180deg;
+	top: unset;
+	bottom: 0;
+	filter: unset;
+}
+
+/*================================================
 				  	  Timeline
 ================================================*/
 
@@ -324,25 +352,6 @@ hr {
 				flex: 1;
 			}
 
-			/* event image gallery */
-			.gallery {
-				z-index: 1;
-				height: fit-content;
-				align-items: center;
-				display: flex;
-				padding-bottom: 2rem;
-				justify-content: space-evenly;
-				gap: 12px;
-				position: relative;
-
-				img {
-					object-fit: cover;
-					max-block-size: 270px;
-					border-radius: var(--card_corner_radius);
-					box-shadow: 0px 0px 5px 5px var(--shadow);
-					max-width: 270px;
-				}
-			}
 		}
 	}
 
@@ -732,7 +741,7 @@ hr {
 }
 
 /*================================================
-				Progress Lists
+					Progress Lists
 ================================================*/
 
 .progress-list > * {
@@ -766,31 +775,36 @@ hr {
 }
 
 /*================================================
-				  	  Paper Tear
+					Galleries
 ================================================*/
 
-.paper-tear {
-    position: absolute;
-	z-index: 11; /* Ensure this is higher than the z-index of main.content::before */
-	top: 0;
-	left: -1rem;
-    width: 120dvw;
-    margin: 0 calc(50% - 50vw);
+/* image gallery */
+.gallery {
+	z-index: 1;
+	height: fit-content;
+	align-items: center;
+	display: flex;
+	justify-content: space-evenly;
+	gap: 12px;
+	position: relative;
+	flex-direction: row !important;
 
-	.tear {
-		overflow: hidden;
-		height: 15px;
-		background: var(--paper);
-		/* tear clip path */
-		clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 98% 80%, 98% 90%, 90% 60%, 86% 98%, 78% 60%, 76% 99%, 69% 94%, 64% 80%, 61% 75%, 57% 50%, 48% 98%, 46% 76%, 39% 50%, 33% 97%, 28% 80%, 27% 98%, 22% 69%, 13% 85%, 8% 67%, 2% 97%, 0% 100%);
+	img {
+		object-fit: cover;
+		max-block-size: 270px;
+		border-radius: var(--card_corner_radius);
+		box-shadow: 0px 0px 5px 5px var(--shadow);
+		max-width: 270px;
 	}
 }
 
-.paper-tear.flip {
-	rotate: 180deg;
-	top: unset;
-	bottom: 0;
-	filter: unset;
+
+.content:has(> .gallery) {
+	flex-direction: column;
+}
+
+.content:has(> .text + .gallery) {
+	flex-direction: row;
 }
 
 /*================================================
@@ -841,6 +855,10 @@ hr {
 	}
 
 	.timeline-container .event .content {
+		flex-direction: column !important;
+	}
+
+	.content:has(> .text + .gallery) {
 		flex-direction: column !important;
 	}
 }
