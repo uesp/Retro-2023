@@ -136,7 +136,6 @@ header {
 	background-position: center;
 	background-attachment: fixed; /* Keep background static */
 	background-size: cover;
-	transform: scale(1.1); /* Start zoomed in */
 	transition: transform 0.2s ease-out; /* Smooth effect */
 	will-change: transform; /* Optimize rendering */
 	z-index: -1; /* Place behind content */
