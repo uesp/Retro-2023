@@ -861,3 +861,26 @@ hr {
 		flex-direction: column !important;
 	}
 }
+
+/*================================================
+					  Watermark
+================================================*/
+
+#watermark {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	width: 40vw; /* Proportional to the viewport width */
+	max-width: 200px; /* Set maximum width */
+	height: auto;
+	opacity: 0.8;
+	pointer-events: none;
+	padding: 5px; /* Add slight padding */
+	overflow: clip;
+}
+
+#watermark img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
